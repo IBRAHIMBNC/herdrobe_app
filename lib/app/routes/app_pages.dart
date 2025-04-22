@@ -7,13 +7,15 @@ import '../modules/auth/login/views/login_view.dart';
 import '../modules/auth/signUp/bindings/sign_up_binding.dart';
 import '../modules/auth/signUp/views/sign_up_view.dart';
 import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/search/bindings/search_binding.dart';
-import '../modules/home/search/views/search_view.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/navigation/bindings/navigation_binding.dart';
 import '../modules/navigation/views/navigation_view.dart';
 import '../modules/profileCompletion/bindings/profile_completion_binding.dart';
 import '../modules/profileCompletion/views/profile_completion_view.dart';
+import '../modules/searchProduct/bindings/search_product_binding.dart';
+import '../modules/searchProduct/bindings/search_product_binding.dart';
+import '../modules/searchProduct/views/search_product_view.dart';
+import '../modules/searchProduct/views/search_product_view.dart';
 import '../modules/welcome/bindings/welcome_binding.dart';
 import '../modules/welcome/views/welcome_view.dart';
 
@@ -29,13 +31,6 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
-      children: [
-        GetPage(
-          name: _Paths.SEARCH,
-          page: () => const SearchView(),
-          binding: SearchBinding(),
-        ),
-      ],
     ),
     GetPage(
       name: _Paths.LOGIN,
@@ -66,6 +61,11 @@ class AppPages {
       name: _Paths.NAVIGATION,
       page: () => const NavigationView(),
       binding: NavigationBinding(),
+    ),
+    GetPage(
+      name: _Paths.SEARCH_PRODUCT,
+      page: () => const SearchProductView(),
+      binding: SearchProductBinding(),
     ),
   ];
 }

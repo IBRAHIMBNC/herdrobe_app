@@ -107,7 +107,7 @@ class HomeView extends GetView<HomeController> {
                     child:
                         CustomTextField(
                           onTap: () {
-                            Get.toNamed(Routes.SEARCH);
+                            Get.toNamed(Routes.SEARCH_PRODUCT);
                           },
                           bgColor: Colors.white,
                           borderRadius: 50.r,

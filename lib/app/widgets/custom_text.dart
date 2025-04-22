@@ -99,12 +99,14 @@ class CustomText extends StatelessWidget {
     Color? color,
     double? fontSize,
     TextAlign? textAlign,
+    FontWeight? fontWeight,
   }) {
     return CustomText(
       text,
       style: AppTextStyles.mediumHeading20.copyWith(
         color: color,
         fontSize: fontSize?.sp,
+        fontWeight: fontWeight,
       ),
       textAlign: textAlign,
       autoSized: true,

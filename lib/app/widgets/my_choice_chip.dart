@@ -32,16 +32,24 @@ class MyChoiceChip extends StatelessWidget {
                 onChanged!(value);
               },
       padding: const EdgeInsets.symmetric(
-        horizontal: kPadding16,
+        horizontal: kPadding20,
         vertical: kPadding8,
       ),
       margin: EdgeInsets.only(right: gap),
-      color: backgroundColor,
-      radius: 50.r,
-      border: BorderSide(color: backgroundColor, width: 1),
+      color: value ? AppColors.brand.withOpacity(0.1) : AppColors.cardColor,
+      radius: 8.r,
+      border: BorderSide(
+        color: value ? AppColors.brand : Colors.transparent,
+        width: 1,
+      ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: [CustomText.small12(text, color: AppColors.white)],
+        children: [
+          CustomText.small12(
+            text,
+            color: value ? AppColors.brand : AppColors.textColor1,
+          ),
+        ],
       ),
     );
   }

@@ -25,8 +25,8 @@ class CircleButton extends StatelessWidget {
         icon is String
             ? SvgPicture.asset(
               icon,
-              height: 20.h,
-              width: 20.w,
+              height: radius?.h ?? 20.h,
+              width: radius?.w ?? 20.w,
               color: iconColor,
             )
             : icon is Widget

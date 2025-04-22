@@ -10,7 +10,7 @@ abstract class Routes {
   static const PROFILE_COMPLETION = _Paths.PROFILE_COMPLETION;
   static const WELCOME = _Paths.WELCOME;
   static const NAVIGATION = _Paths.NAVIGATION;
-  static const SEARCH = _Paths.HOME + _Paths.SEARCH;
+  static const SEARCH_PRODUCT = _Paths.SEARCH_PRODUCT;
 }
 
 abstract class _Paths {
@@ -22,5 +22,5 @@ abstract class _Paths {
   static const PROFILE_COMPLETION = '/profile-completion';
   static const WELCOME = '/welcome';
   static const NAVIGATION = '/navigation';
-  static const SEARCH = '/search';
+  static const SEARCH_PRODUCT = '/search-product';
 }

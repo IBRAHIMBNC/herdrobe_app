@@ -6,6 +6,7 @@ import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/extensions/double.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
+import 'package:smooth_corner/smooth_corner.dart';
 
 class GeneralBottomSheet extends StatefulWidget {
   const GeneralBottomSheet({super.key, this.body});
@@ -34,11 +35,14 @@ class _GeneralBottomSheetState extends State<GeneralBottomSheet>
   @override
   Widget build(BuildContext context) {
     return BottomSheet(
+      onDragStart: (details) {},
+      onDragEnd: (details, {required isClosing}) {},
       backgroundColor: Colors.transparent,
       elevation: 0,
       onClosing: () {
         print('Bottom sheet closed');
       },
+
       animationController: _animationController,
       builder: (context) {
         return BackdropFilter(
@@ -49,9 +53,7 @@ class _GeneralBottomSheetState extends State<GeneralBottomSheet>
           ),
           child: MyContainer(
             color: AppColors.white,
-            onTap: () {
-              Navigator.pop(context);
-            },
+
             radius: BorderRadius.only(
               topLeft: Radius.circular(24.r),
               topRight: Radius.circular(24.r),

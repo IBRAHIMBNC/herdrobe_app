@@ -1,0 +1,13 @@
+const double kPadding4 = 4;
+const double kPadding8 = 8;
+const double kPadding12 = 12;
+const double kPadding16 = 16;
+const double kPadding20 = 20;
+const double kPadding24 = 24;
+const double kPadding28 = 28;
+const double kPadding32 = 32;
+const double kPadding36 = 36;
+const double kPadding40 = 40;
+const double kPadding44 = 44;
+const double kPadding88 = 48;
+const double kPadding80 = 80;

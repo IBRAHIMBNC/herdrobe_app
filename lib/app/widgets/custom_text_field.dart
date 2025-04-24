@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
-import 'package:herdrobe_app/app/extensions/double.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/utils/app_text_styles.dart';

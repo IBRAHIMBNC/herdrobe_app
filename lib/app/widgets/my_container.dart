@@ -45,15 +45,15 @@ class MyContainer extends Container {
             decoration ??
             ShapeDecoration(
               gradient: gradient,
-              shadows: [
-                shadow ??
-                    BoxShadow(
-                      color: AppColors.black.withOpacity(0.03),
-                      offset: const Offset(4, 4),
-                      blurRadius: 20,
-                      spreadRadius: 0,
-                    ),
-              ],
+              // shadows: [
+              //   shadow ??
+              //       BoxShadow(
+              //         color: AppColors.black.withOpacity(0.03),
+              //         offset: const Offset(4, 4),
+              //         blurRadius: 20,
+              //         spreadRadius: 0,
+              //       ),
+              // ],
               color: gradient != null ? null : color ?? AppColors.white,
               image: backgroundImage,
               shape: SmoothRectangleBorder(

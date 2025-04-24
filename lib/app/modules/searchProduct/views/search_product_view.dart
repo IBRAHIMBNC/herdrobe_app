@@ -62,11 +62,12 @@ class SearchProductView extends GetView<SearchProductController> {
               color: AppColors.black.withOpacity(0.1),
               width: 1,
             ),
-            padding: kPadding24.all,
+            padding: kPadding24.hp,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 if (!controller.isSearching) ...[
+                  16.verticalSpace,
                   Row(
                     children: [
                       SvgPicture.asset(AppIcons.recent),

@@ -29,7 +29,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       toolbarHeight: height ?? 56.h,
       backgroundColor: backgroundColor ?? Colors.white,
-      elevation: 0,
+      scrolledUnderElevation: 4,
+      shadowColor: AppColors.black.withOpacity(0.1),
       centerTitle: false,
       automaticallyImplyLeading: false,
       title: Row(

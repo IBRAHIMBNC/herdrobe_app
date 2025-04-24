@@ -5,8 +5,8 @@ import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
 
-class MyCard extends StatelessWidget {
-  const MyCard({
+class MyListTile extends StatelessWidget {
+  const MyListTile({
     super.key,
     required this.title,
     this.onTap,
@@ -45,7 +45,6 @@ class MyCard extends StatelessWidget {
       color: color ?? Colors.transparent,
       radius: radius ?? 20.r,
       border: border ?? BorderSide.none,
-      // shadow: kSTransparentShadow,
       child: Row(
         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,

@@ -7,7 +7,7 @@ import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/utils/my_utils.dart';
 import 'package:herdrobe_app/app/widgets/circle_button.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
-import 'package:herdrobe_app/app/widgets/my_card.dart';
+import 'package:herdrobe_app/app/widgets/my_list_tile.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
 
 class ProductResultListing extends StatelessWidget {
@@ -16,6 +16,7 @@ class ProductResultListing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      padding: EdgeInsets.symmetric(vertical: kPadding16.h),
       itemBuilder: (context, index) => _buildItem(),
       separatorBuilder: (context, index) => 16.verticalSpace,
       itemCount: 10,
@@ -31,7 +32,7 @@ class ProductResultListing extends StatelessWidget {
     border: BorderSide(width: 1, color: AppColors.black.withOpacity(0.1)),
     radius: 15.r,
     child: Expanded(
-      child: MyCard(
+      child: MyListTile(
         color: AppColors.white,
         leading: MyContainer(
           width: 100.w,

@@ -31,7 +31,7 @@ class CircleButton extends StatelessWidget {
             )
             : icon is Widget
             ? icon
-            : CustomText.small12(icon, color: Colors.white);
+            : null;
     return InkWell(
       onTap: onTap,
       child: CircleAvatar(

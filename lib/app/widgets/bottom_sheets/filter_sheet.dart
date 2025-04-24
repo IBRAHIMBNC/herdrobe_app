@@ -9,7 +9,7 @@ import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/widgets/circle_button.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/general_bottom_sheet.dart';
-import 'package:herdrobe_app/app/widgets/my_card.dart';
+import 'package:herdrobe_app/app/widgets/my_list_tile.dart';
 import 'package:herdrobe_app/app/widgets/my_choice_chip.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
 import 'package:herdrobe_app/app/widgets/my_rounded_button.dart';
@@ -19,7 +19,7 @@ class SearchFilterSheet extends GetView<SearchController> {
   @override
   Widget build(BuildContext context) {
     // Initialize range values with controller or with local state
-    RangeValues _currentRangeValues = const RangeValues(0, 1000);
+    // RangeValues _currentRangeValues = const RangeValues(0, 1000);
 
     return GeneralBottomSheet(
       body: DefaultTabController(
@@ -108,7 +108,7 @@ class SearchFilterSheet extends GetView<SearchController> {
               ],
             ),
             16.verticalSpace,
-            MyCard(
+            MyListTile(
               padding: EdgeInsets.symmetric(
                 horizontal: kPadding16.w,
                 vertical: kPadding12.h,
@@ -117,7 +117,11 @@ class SearchFilterSheet extends GetView<SearchController> {
                 color: AppColors.black.withOpacity(0.1),
                 width: 1,
               ),
-              leading: MyContainer(height: 65.h, width: 78.w),
+              leading: MyContainer(
+                height: 65.h,
+                width: 78.w,
+                color: AppColors.cardColor,
+              ),
               title: CustomText.smallHeading16('Annie general store'),
               verticalSpacing: kPadding8.h,
               subtitle: CustomText.small12(

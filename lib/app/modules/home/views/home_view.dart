@@ -16,7 +16,7 @@ import 'package:herdrobe_app/app/utils/my_utils.dart';
 import 'package:herdrobe_app/app/widgets/circle_button.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/custom_text_field.dart';
-import 'package:herdrobe_app/app/widgets/my_card.dart';
+import 'package:herdrobe_app/app/widgets/my_list_tile.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
 import '../controllers/home_controller.dart';
 
@@ -75,7 +75,7 @@ class HomeView extends GetView<HomeController> {
               children: [
                 SizedBox(
                   height: 48.h,
-                  child: MyCard(
+                  child: MyListTile(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     padding: kPadding24.hp,
                     leading: CircleAvatar(

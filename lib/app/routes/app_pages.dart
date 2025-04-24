@@ -10,11 +10,11 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/navigation/bindings/navigation_binding.dart';
 import '../modules/navigation/views/navigation_view.dart';
+import '../modules/productDetails/bindings/product_details_binding.dart';
+import '../modules/productDetails/views/product_details_view.dart';
 import '../modules/profileCompletion/bindings/profile_completion_binding.dart';
 import '../modules/profileCompletion/views/profile_completion_view.dart';
 import '../modules/searchProduct/bindings/search_product_binding.dart';
-import '../modules/searchProduct/bindings/search_product_binding.dart';
-import '../modules/searchProduct/views/search_product_view.dart';
 import '../modules/searchProduct/views/search_product_view.dart';
 import '../modules/welcome/bindings/welcome_binding.dart';
 import '../modules/welcome/views/welcome_view.dart';
@@ -66,6 +66,11 @@ class AppPages {
       name: _Paths.SEARCH_PRODUCT,
       page: () => const SearchProductView(),
       binding: SearchProductBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_DETAILS,
+      page: () => const ProductDetailsView(),
+      binding: ProductDetailsBinding(),
     ),
   ];
 }

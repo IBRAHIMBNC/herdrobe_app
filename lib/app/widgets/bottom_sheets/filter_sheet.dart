@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/modules/profileCompletion/views/profile_completion_view.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
+import 'package:herdrobe_app/app/widgets/address_details_card.dart';
 import 'package:herdrobe_app/app/widgets/circle_button.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
-import 'package:herdrobe_app/app/widgets/general_bottom_sheet.dart';
+import 'package:herdrobe_app/app/widgets/generic_bottom_sheet.dart';
 import 'package:herdrobe_app/app/widgets/my_list_tile.dart';
 import 'package:herdrobe_app/app/widgets/my_choice_chip.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
@@ -21,7 +21,7 @@ class SearchFilterSheet extends GetView<SearchController> {
     // Initialize range values with controller or with local state
     // RangeValues _currentRangeValues = const RangeValues(0, 1000);
 
-    return GeneralBottomSheet(
+    return GenericBottomSheet(
       body: DefaultTabController(
         length: 2,
         child: Column(
@@ -108,30 +108,15 @@ class SearchFilterSheet extends GetView<SearchController> {
               ],
             ),
             16.verticalSpace,
-            MyListTile(
-              padding: EdgeInsets.symmetric(
-                horizontal: kPadding16.w,
-                vertical: kPadding12.h,
-              ),
+            MyContainer(
               border: BorderSide(
                 color: AppColors.black.withOpacity(0.1),
                 width: 1,
               ),
-              leading: MyContainer(
-                height: 65.h,
-                width: 78.w,
-                color: AppColors.cardColor,
-              ),
-              title: CustomText.smallHeading16('Annie general store'),
-              verticalSpacing: kPadding8.h,
-              subtitle: CustomText.small12(
-                'Peshawar',
-                color: AppColors.textColor2,
-              ),
-              trailing: Icon(CupertinoIcons.chevron_right, size: 20.r),
+              child: AddressDetailsCard(),
             ),
             16.verticalSpace,
-            RoundedButton('Apply filter'),
+            RoundedButton.filledMedium('Apply filter', onTap: () {}),
           ],
         ),
       ),

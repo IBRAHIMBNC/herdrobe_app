@@ -9,6 +9,7 @@ import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/my_utils.dart';
+import 'package:herdrobe_app/app/widgets/custom_image.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/multi_color_title.dart';
 import 'package:herdrobe_app/app/widgets/my_rounded_button.dart';
@@ -74,9 +75,10 @@ class WelcomeView extends GetView<WelcomeController> {
                   CircleAvatar(
                     radius: 104.r,
                     backgroundColor: AppColors.brand,
-                    child: CircleAvatar(
+                    child: CustomImage.fromSize(
+                      MyUtils.getTempLink(),
                       radius: 100.r,
-                      backgroundImage: MyUtils.getDummyImageProvider(),
+                      size: 198.h,
                       backgroundColor: AppColors.white,
                     ),
                   ),

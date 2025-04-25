@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/utils.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
-import 'package:herdrobe_app/app/widgets/general_bottom_sheet.dart';
+import 'package:herdrobe_app/app/widgets/generic_bottom_sheet.dart';
 import 'package:herdrobe_app/app/widgets/my_rounded_button.dart';
 
 class ConfirmationSheet extends StatelessWidget {
@@ -25,7 +25,7 @@ class ConfirmationSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GeneralBottomSheet(
+    return GenericBottomSheet(
       body: Column(
         children: [
           CustomText.mediumHeading(

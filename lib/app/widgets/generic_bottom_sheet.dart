@@ -6,17 +6,16 @@ import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
-import 'package:smooth_corner/smooth_corner.dart';
 
-class GeneralBottomSheet extends StatefulWidget {
-  const GeneralBottomSheet({super.key, this.body});
+class GenericBottomSheet extends StatefulWidget {
+  const GenericBottomSheet({super.key, this.body});
   final Widget? body;
 
   @override
-  _GeneralBottomSheetState createState() => _GeneralBottomSheetState();
+  _GenericBottomSheetState createState() => _GenericBottomSheetState();
 }
 
-class _GeneralBottomSheetState extends State<GeneralBottomSheet>
+class _GenericBottomSheetState extends State<GenericBottomSheet>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 

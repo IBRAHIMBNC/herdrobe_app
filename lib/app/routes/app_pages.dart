@@ -6,6 +6,8 @@ import '../modules/auth/login/bindings/login_binding.dart';
 import '../modules/auth/login/views/login_view.dart';
 import '../modules/auth/signUp/bindings/sign_up_binding.dart';
 import '../modules/auth/signUp/views/sign_up_view.dart';
+import '../modules/checkOut/bindings/check_out_binding.dart';
+import '../modules/checkOut/views/check_out_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/navigation/bindings/navigation_binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.SELLER_DETAILS,
       page: () => const SellerDetailsView(),
       binding: SellerDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHECK_OUT,
+      page: () => const CheckOutView(),
+      binding: CheckOutBinding(),
     ),
   ];
 }

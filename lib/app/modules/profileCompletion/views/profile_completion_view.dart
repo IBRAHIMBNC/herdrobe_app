@@ -9,6 +9,7 @@ import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/utils/app_text_styles.dart';
+import 'package:herdrobe_app/app/widgets/custom_image.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/custom_text_field.dart';
 import 'package:herdrobe_app/app/widgets/multi_color_title.dart';
@@ -47,11 +48,10 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
               CircleAvatar(
                 backgroundColor: AppColors.textField,
                 radius: 50.r,
-                child: SvgPicture.asset(
+                child: CustomImage.fromSize(
                   AppIcons.userFilled,
                   color: AppColors.textColor2,
-                  height: 50.h,
-                  width: 50.w,
+                  size: 50.sp,
                 ),
               ),
               24.verticalSpace,

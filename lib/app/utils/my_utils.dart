@@ -37,7 +37,7 @@ class MyUtils {
     }
   }
 
-  static ImageProvider getDummyImageProvider() {
-    return CachedNetworkImageProvider(getTempLink());
-  }
+  // static ImageProvider getDummyImageProvider() {
+  //   return CachedNetworkImageProvider(getTempLink());
+  // }
 }

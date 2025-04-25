@@ -13,7 +13,7 @@ import 'package:herdrobe_app/app/widgets/bottom_sheets/otp_vertification_sheet.d
 import 'package:herdrobe_app/app/widgets/bottom_sheets/confirmation_sheet.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/custom_text_field.dart';
-import 'package:herdrobe_app/app/widgets/general_bottom_sheet.dart';
+import 'package:herdrobe_app/app/widgets/generic_bottom_sheet.dart';
 import 'package:herdrobe_app/app/widgets/multi_color_title.dart';
 import 'package:herdrobe_app/app/widgets/my_rounded_button.dart';
 

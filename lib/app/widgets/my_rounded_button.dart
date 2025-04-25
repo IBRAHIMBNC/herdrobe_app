@@ -48,7 +48,7 @@ class RoundedButton extends StatelessWidget {
   static const _primaryColor = AppColors.brand;
 
   factory RoundedButton.filledMedium(
-    String label, {
+    dynamic label, {
     Function()? onTap,
     bool isLoading = false,
     Color? backgroundColor,

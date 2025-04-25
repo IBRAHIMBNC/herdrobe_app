@@ -18,12 +18,18 @@ import 'package:herdrobe_app/app/widgets/my_list_tile.dart';
 
 class ProductDetailsCard extends StatelessWidget {
   const ProductDetailsCard({super.key, this.isFavorite = false})
-    : _isListTile = false;
+    : _isListTile = false,
+      _showBorder = true;
   final bool isFavorite;
   final bool _isListTile;
+  final bool _showBorder;
 
-  ProductDetailsCard.listTile({super.key, this.isFavorite = false})
-    : _isListTile = true;
+  ProductDetailsCard.listTile({
+    super.key,
+    this.isFavorite = false,
+    bool showBorder = true,
+  }) : _isListTile = true,
+       _showBorder = showBorder;
 
   @override
   Widget build(BuildContext context) {
@@ -38,51 +44,62 @@ class ProductDetailsCard extends StatelessWidget {
         horizontal: kPadding8.w,
         vertical: kPadding8.h,
       ),
-      border: BorderSide(width: 1, color: AppColors.black.withOpacity(0.1)),
+      border:
+          _showBorder
+              ? BorderSide(width: 1, color: AppColors.black.withOpacity(0.1))
+              : null,
       radius: 15.r,
-      child: MyListTile(
-        color: AppColors.white,
-        leading: CustomImage(
-          MyUtils.getTempLink(),
-          width: 100.w,
-          radius: 10.r,
-          height: 85.h,
-        ),
-        title: MyContainer(
-          padding: EdgeInsets.symmetric(
-            horizontal: kPadding8.w,
-            vertical: kPadding4.h,
-          ),
-          color: AppColors.cardColor,
-          child: CustomText.smaller('Rent', color: AppColors.textColor1),
-        ),
-        // spacing: kPadding12.w,
-
-        // leading: CircleAvatar(
-        //     backgroundImage:
-        //         MyUtils.buildImageProvider(seller.imageUrl)),
-        subtitle: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 4.h,
-          children: [
-            CustomText.smallHeading16('Rs 4,000'),
-            CustomText.paragraph('walima maxi'),
-            CustomText.smaller(
-              'Abdullah Town, Lahore | 2 days ago ',
-              color: AppColors.textColor2,
+      child: Stack(
+        fit: StackFit.loose,
+        children: [
+          MyListTile(
+            color: AppColors.white,
+            leading: CustomImage(
+              MyUtils.getTempLink(),
+              width: 100.w,
+              radius: 10.r,
+              height: 85.h,
             ),
-          ],
-        ),
-        padding: EdgeInsets.zero,
+            title: MyContainer(
+              padding: EdgeInsets.symmetric(
+                horizontal: kPadding8.w,
+                vertical: kPadding4.h,
+              ),
+              color: AppColors.cardColor,
+              child: CustomText.smaller('Rent', color: AppColors.textColor1),
+            ),
+            // spacing: kPadding12.w,
 
-        crossAxisAlignment: CrossAxisAlignment.start,
-        trailing: CircleButton(
-          icon: AppIcons.heart,
-          iconColor: AppColors.black,
-          backgroundColor: AppColors.cardColor,
-          radius: 14.r,
-        ),
+            // leading: CircleAvatar(
+            //     backgroundImage:
+            //         MyUtils.buildImageProvider(seller.imageUrl)),
+            subtitle: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 4.h,
+              children: [
+                CustomText.smallHeading16('Rs 4,000'),
+                CustomText.paragraph('walima maxi'),
+                CustomText.smaller(
+                  'Abdullah Town, Lahore | 2 days ago ',
+                  color: AppColors.textColor2,
+                ),
+              ],
+            ),
+            padding: EdgeInsets.zero,
+
+            crossAxisAlignment: CrossAxisAlignment.start,
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: CircleButton(
+              icon: AppIcons.heart,
+              iconColor: AppColors.black,
+              backgroundColor: AppColors.cardColor,
+              radius: 14.r,
+            ),
+          ),
+        ],
       ),
     );
   }

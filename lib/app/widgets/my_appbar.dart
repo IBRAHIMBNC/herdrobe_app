@@ -34,6 +34,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: false,
       automaticallyImplyLeading: false,
       title: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           showBackButton
               ? Padding(
@@ -55,18 +56,17 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               )
               : SizedBox.shrink(),
+          16.horizontalSpace,
           Expanded(
             child:
-                title != null && title is String
-                    ? CustomText(
+                (title != null && title is String
+                    ? CustomText.mediumHeading(
                       title!,
-                      style: AppTextStyles.mediumHeading20.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
+                      fontWeight: FontWeight.w600,
                     )
                     : title is Widget
                     ? title
-                    : null,
+                    : SizedBox.shrink()),
           ),
         ],
       ),

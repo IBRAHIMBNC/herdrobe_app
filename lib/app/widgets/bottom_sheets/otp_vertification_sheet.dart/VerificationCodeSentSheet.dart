@@ -6,7 +6,7 @@ import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
-import 'package:herdrobe_app/app/widgets/general_bottom_sheet.dart';
+import 'package:herdrobe_app/app/widgets/generic_bottom_sheet.dart';
 import 'package:herdrobe_app/app/widgets/my_rounded_button.dart';
 import 'package:herdrobe_app/app/widgets/otp_textfield.dart';
 
@@ -15,7 +15,7 @@ class OtpVerificationSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GeneralBottomSheet(
+    return GenericBottomSheet(
       body: Column(
         children: [
           CustomText.mediumHeading('Verification code'),

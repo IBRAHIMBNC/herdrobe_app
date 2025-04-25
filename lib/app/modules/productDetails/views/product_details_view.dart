@@ -144,11 +144,8 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
       bottomNavigationBar: MyContainer(
         radius: 0,
         border: BorderSide(color: AppColors.lightGrey, width: 1),
-        padding: EdgeInsets.symmetric(
-          horizontal: kPadding24.w,
-          vertical: kPadding16.h,
-        ),
-        child: RoundedButton(
+        padding: kPadding24.all,
+        child: RoundedButton.filledMedium(
           Row(
             children: [
               CustomText.boldParagraph('Chat Now', color: AppColors.white),
@@ -156,6 +153,9 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
               Icon(CupertinoIcons.chevron_right, color: AppColors.white),
             ],
           ),
+          onTap: () {
+            Get.toNamed(Routes.CHECK_OUT);
+          },
         ),
       ),
     );

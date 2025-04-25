@@ -14,10 +14,13 @@ import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/utils/my_utils.dart';
 import 'package:herdrobe_app/app/widgets/circle_button.dart';
+import 'package:herdrobe_app/app/widgets/custom_image.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/custom_text_field.dart';
+import 'package:herdrobe_app/app/widgets/generic_bottom_sheet.dart';
 import 'package:herdrobe_app/app/widgets/my_list_tile.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
+import 'package:herdrobe_app/app/widgets/my_rounded_button.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -76,12 +79,17 @@ class HomeView extends GetView<HomeController> {
                 SizedBox(
                   height: 48.h,
                   child: MyListTile(
+                    onTap: () {
+                      Get.bottomSheet(LoginAlertSheet());
+                    },
                     crossAxisAlignment: CrossAxisAlignment.start,
                     padding: kPadding24.hp,
-                    leading: CircleAvatar(
-                      radius: 26.r,
-                      backgroundImage: MyUtils.getDummyImageProvider(),
-                      backgroundColor: AppColors.white.withOpacity(0.2),
+                    leading: CustomImage(
+                      MyUtils.getTempLink(),
+                      radius: 50.r,
+                      height: 40.h,
+                      width: 40.w,
+                      fit: BoxFit.cover,
                     ),
                     title: CustomText.boldHeading18(
                       'Hi Morgan!',
@@ -128,6 +136,45 @@ class HomeView extends GetView<HomeController> {
                 ),
               ],
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class LoginAlertSheet extends StatelessWidget {
+  const LoginAlertSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GenericBottomSheet(
+      body: Column(
+        children: [
+          CircleAvatar(
+            radius: 50.r,
+            backgroundColor: AppColors.lightGrey,
+            child: CustomImage.fromSize(
+              AppIcons.signinRequired,
+              size: 45.sp,
+              fit: BoxFit.contain,
+            ),
+          ),
+          16.verticalSpace,
+          CustomText.mediumHeading('Account Required!'),
+          8.verticalSpace,
+          CustomText.paragraph(
+            'Please log in or register to proceed further.',
+            color: AppColors.textColor2,
+          ),
+
+          16.verticalSpace,
+
+          RoundedButton.filledMedium(
+            'Login / Create Account',
+            onTap: () {
+              Get.toNamed(Routes.LOGIN);
+            },
           ),
         ],
       ),

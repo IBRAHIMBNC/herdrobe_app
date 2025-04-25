@@ -41,6 +41,9 @@ class CustomImage extends StatelessWidget {
   /// Child widget to overlay on top of the image
   final Widget? child;
 
+  /// Image Color
+  final Color? color;
+
   const CustomImage(
     this.imagePath, {
     Key? key,
@@ -55,7 +58,25 @@ class CustomImage extends StatelessWidget {
     this.useSmoothCorners = true,
     this.smoothness = 1.0,
     this.child,
+    this.color,
   }) : super(key: key);
+
+  const CustomImage.fromSize(
+    this.imagePath, {
+    Key? key,
+    required double size,
+    this.fit = BoxFit.cover,
+    this.radius = 12.0,
+    this.backgroundColor,
+    this.errorWidget,
+    this.border,
+    this.useSmoothCorners = true,
+    this.smoothness = 1.0,
+    this.child,
+    this.color,
+  }) : height = size,
+       width = size,
+       super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +110,7 @@ class CustomImage extends StatelessWidget {
           height: height,
           fit: fit,
           placeholderBuilder: (context) => _buildShimmer(),
+          color: color,
         );
       }
       // Check if it's a file SVG
@@ -99,6 +121,7 @@ class CustomImage extends StatelessWidget {
           height: height,
           fit: fit,
           placeholderBuilder: (context) => _buildShimmer(),
+          color: color,
         );
       }
       // Otherwise treat it as an asset SVG
@@ -109,6 +132,7 @@ class CustomImage extends StatelessWidget {
           height: height,
           fit: fit,
           placeholderBuilder: (context) => _buildShimmer(),
+          color: color,
         );
       }
     }
@@ -121,6 +145,7 @@ class CustomImage extends StatelessWidget {
         fit: fit,
         placeholder: (context, url) => _buildShimmer(),
         errorWidget: (context, url, error) => _buildErrorWidget(),
+        color: color,
       );
     }
     // Check if image path is a file path (non-SVG)
@@ -131,6 +156,7 @@ class CustomImage extends StatelessWidget {
         height: height, // Pass height
         fit: fit,
         errorBuilder: (context, error, stackTrace) => _buildErrorWidget(),
+        color: color,
       );
     }
     // Otherwise treat it as an asset image (non-SVG)
@@ -141,6 +167,7 @@ class CustomImage extends StatelessWidget {
         height: height, // Pass height
         fit: fit,
         errorBuilder: (context, error, stackTrace) => _buildErrorWidget(),
+        color: color,
       );
     }
   }

@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
-import 'package:herdrobe_app/app/extensions/double.dart';
+import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/modules/searchProduct/views/widgets/product_result_listing.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';

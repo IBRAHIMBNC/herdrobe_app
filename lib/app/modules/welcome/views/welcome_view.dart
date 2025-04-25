@@ -5,15 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
-import 'package:herdrobe_app/app/extensions/double.dart';
+import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/my_utils.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/multi_color_title.dart';
-import 'package:herdrobe_app/app/widgets/my_appbar.dart';
 import 'package:herdrobe_app/app/widgets/my_rounded_button.dart';
-import 'package:herdrobe_app/main.dart';
 
 import '../controllers/welcome_controller.dart';
 

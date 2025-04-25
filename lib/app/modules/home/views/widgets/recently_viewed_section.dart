@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
-import 'package:herdrobe_app/app/extensions/double.dart';
+import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/product_details_card.dart';
 

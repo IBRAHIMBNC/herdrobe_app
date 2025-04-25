@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
-import 'package:herdrobe_app/app/extensions/double.dart';
-import 'package:herdrobe_app/app/extensions/widget.dart';
+import 'package:herdrobe_app/app/data/extensions/double.dart';
+import 'package:herdrobe_app/app/data/extensions/widget.dart';
 import 'package:herdrobe_app/app/modules/home/views/widgets/catogory.dart';
 import 'package:herdrobe_app/app/modules/home/views/widgets/near_you_section.dart';
 import 'package:herdrobe_app/app/modules/home/views/widgets/promotion_banner.dart';

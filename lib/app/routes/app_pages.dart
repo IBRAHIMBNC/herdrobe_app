@@ -16,6 +16,8 @@ import '../modules/profileCompletion/bindings/profile_completion_binding.dart';
 import '../modules/profileCompletion/views/profile_completion_view.dart';
 import '../modules/searchProduct/bindings/search_product_binding.dart';
 import '../modules/searchProduct/views/search_product_view.dart';
+import '../modules/sellerDetails/bindings/seller_details_binding.dart';
+import '../modules/sellerDetails/views/seller_details_view.dart';
 import '../modules/welcome/bindings/welcome_binding.dart';
 import '../modules/welcome/views/welcome_view.dart';
 
@@ -71,6 +73,11 @@ class AppPages {
       name: _Paths.PRODUCT_DETAILS,
       page: () => const ProductDetailsView(),
       binding: ProductDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.SELLER_DETAILS,
+      page: () => const SellerDetailsView(),
+      binding: SellerDetailsBinding(),
     ),
   ];
 }

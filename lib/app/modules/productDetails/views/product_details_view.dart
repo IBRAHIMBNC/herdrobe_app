@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
-import 'package:herdrobe_app/app/extensions/double.dart';
+import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/modules/productDetails/views/widgets/related_product_section.dart';
 import 'package:herdrobe_app/app/modules/productDetails/views/widgets/reviews_products_count.dart';
+import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/widgets/circle_button.dart';
+import 'package:herdrobe_app/app/widgets/custom_image.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/my_appbar.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
@@ -41,11 +43,11 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                   children:
                       controller.images
                           .map(
-                            (image) => MyContainer(
-                              backgroundImage: DecorationImage(
-                                image: CachedNetworkImageProvider(image),
-                                fit: BoxFit.cover,
-                              ),
+                            (image) => CustomImage(
+                              image,
+                              height: 337.h,
+                              radius: 20,
+                              width: 1.sh,
                             ),
                           )
                           .toList(),
@@ -98,6 +100,9 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
               _buildDescriptionCard(),
               16.verticalSpace,
               MyContainer(
+                onTap: () {
+                  Get.toNamed(Routes.SELLER_DETAILS);
+                },
                 padding: kPadding16.all,
                 color: AppColors.cardColor,
                 width: double.infinity,

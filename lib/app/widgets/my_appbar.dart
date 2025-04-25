@@ -29,8 +29,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       toolbarHeight: height ?? 56.h,
       backgroundColor: backgroundColor ?? Colors.white,
-      scrolledUnderElevation: 4,
-      shadowColor: AppColors.black.withOpacity(0.1),
+      scrolledUnderElevation: 8,
+      shadowColor: AppColors.black.withOpacity(0.2),
       centerTitle: false,
       automaticallyImplyLeading: false,
       title: Row(
@@ -70,29 +70,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
-      // leadingWidth: 70.w,
       titleSpacing: 8.w,
-      // leading:
-      // showBackButton
-      //     ? Padding(
-      //       padding: EdgeInsets.symmetric(
-      //         vertical: preferredSize.height / 7,
-      //         horizontal: preferredSize.height / 7,
-      //       ),
-      //       child: InkWell(
-      //         onTap: onBackPressed ?? () => Navigator.of(context).pop(),
-      //         borderRadius: BorderRadius.circular(50),
-      //         child: CircleAvatar(
-      //           backgroundColor: AppColors.cardColor,
-      //           child: Icon(
-      //             Icons.arrow_back_ios_rounded,
-      //             size: 18,
-      //             color: iconColor,
-      //           ),
-      //         ),
-      //       ),
-      //     )
-      //     : null,
       actions: actions,
     );
   }

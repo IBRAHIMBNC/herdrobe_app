@@ -7,21 +7,17 @@ import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/data/enums/payment_method.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/modules/checkOut/views/widgets/checkout_item_card.dart';
-import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/utils/app_text_styles.dart';
 import 'package:herdrobe_app/app/widgets/address_details_card.dart';
 import 'package:herdrobe_app/app/widgets/bottom_sheets/confirmation_sheet.dart';
-import 'package:herdrobe_app/app/widgets/custom_image.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/my_appbar.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
 import 'package:herdrobe_app/app/widgets/my_list_tile.dart';
 import 'package:herdrobe_app/app/widgets/my_rounded_button.dart';
 import 'package:herdrobe_app/app/widgets/product_details_card.dart';
-import 'package:herdrobe_app/main.dart';
-
 import '../controllers/check_out_controller.dart';
 
 class CheckOutView extends GetView<CheckOutController> {
@@ -43,7 +39,7 @@ class CheckOutView extends GetView<CheckOutController> {
               ),
               16.verticalSpace,
               CheckoutItemCard(
-                titleIcon: AppIcons.category,
+                titleIcon: AppIcons.cart,
                 title: 'Your Order',
                 child: Column(
                   children: [
@@ -56,7 +52,7 @@ class CheckOutView extends GetView<CheckOutController> {
               ),
               16.verticalSpace,
               CheckoutItemCard(
-                titleIcon: AppIcons.category,
+                titleIcon: AppIcons.paymentMethod,
                 title: 'Payment Method',
                 child: Padding(
                   padding: kPadding16.all,
@@ -98,7 +94,7 @@ class CheckOutView extends GetView<CheckOutController> {
               ),
               16.verticalSpace,
               CheckoutItemCard(
-                titleIcon: AppIcons.category,
+                titleIcon: AppIcons.summary,
                 title: 'Review Summary',
                 child: Padding(
                   padding: kPadding16.all,
@@ -120,7 +116,7 @@ class CheckOutView extends GetView<CheckOutController> {
               ),
               16.verticalSpace,
               CheckoutItemCard(
-                titleIcon: AppIcons.category,
+                titleIcon: AppIcons.info,
                 title: 'Purchase Details',
                 child: Padding(
                   padding: kPadding16.all,

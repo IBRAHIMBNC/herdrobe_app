@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/state_manager.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
@@ -10,7 +9,6 @@ import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/utils/my_utils.dart';
 import 'package:herdrobe_app/app/widgets/custom_image.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
-import 'package:herdrobe_app/app/widgets/my_container.dart';
 
 class Categories extends GetView<HomeController> {
   const Categories({super.key});

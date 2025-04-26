@@ -20,8 +20,6 @@ enum OrderStatus {
         return const Color(0xff1F27EF);
       case OrderStatus.cancelled:
         return Colors.red;
-      default:
-        throw Exception('Invalid OrderStatus');
     }
   }
 
@@ -37,8 +35,6 @@ enum OrderStatus {
         return 'Shipped';
       case OrderStatus.cancelled:
         return 'Cancelled';
-      default:
-        throw Exception('Invalid OrderStatus');
     }
   }
 
@@ -54,8 +50,6 @@ enum OrderStatus {
         return 'Shipped';
       case OrderStatus.cancelled:
         return 'Cancelled';
-      default:
-        throw Exception('Invalid OrderStatus');
     }
   }
 

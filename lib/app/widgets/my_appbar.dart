@@ -38,44 +38,41 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       shadowColor: AppColors.black.withOpacity(0.2),
       centerTitle: false,
       automaticallyImplyLeading: false,
-      title: Padding(
-        padding: kPadding12.left,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            showBackButton
-                ? Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: preferredSize.height / 7,
-                  ),
-                  child: InkWell(
-                    onTap: onBackPressed ?? () => Navigator.of(context).pop(),
-                    borderRadius: BorderRadius.circular(50),
-                    child: CircleAvatar(
-                      backgroundColor: AppColors.cardColor,
-                      child: Icon(
-                        Icons.arrow_back_ios_rounded,
-                        size: 18,
-                        color: iconColor,
-                      ),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          showBackButton
+              ? Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: preferredSize.height / 7,
+                ),
+                child: InkWell(
+                  onTap: onBackPressed ?? () => Navigator.of(context).pop(),
+                  borderRadius: BorderRadius.circular(50),
+                  child: CircleAvatar(
+                    backgroundColor: AppColors.cardColor,
+                    child: Icon(
+                      Icons.arrow_back_ios_rounded,
+                      size: 18,
+                      color: iconColor,
                     ),
                   ),
-                )
-                : SizedBox.shrink(),
-            (titleSpacing ?? 16.w).horizontalSpace,
-            Expanded(
-              child:
-                  (title != null && title is String
-                      ? CustomText.mediumHeading(
-                        title!,
-                        fontWeight: FontWeight.w600,
-                      )
-                      : title is Widget
-                      ? title
-                      : SizedBox.shrink()),
-            ),
-          ],
-        ),
+                ),
+              )
+              : SizedBox.shrink(),
+          (titleSpacing ?? 16.w).horizontalSpace,
+          Expanded(
+            child:
+                (title != null && title is String
+                    ? CustomText.mediumHeading(
+                      title!,
+                      fontWeight: FontWeight.w600,
+                    )
+                    : title is Widget
+                    ? title
+                    : SizedBox.shrink()),
+          ),
+        ],
       ),
       titleSpacing: 8.w,
       actions: actions,

@@ -67,7 +67,7 @@ class CustomImage extends StatelessWidget {
     Key? key,
     required double size,
     this.fit = BoxFit.cover,
-    this.radius = 12.0,
+    this.radius = 0,
     this.backgroundColor,
     this.errorWidget,
     this.border,

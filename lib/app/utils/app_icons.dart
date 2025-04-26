@@ -37,11 +37,18 @@ class AppIcons {
   static const String orderPlaced = '${basePath}order_placed.svg';
   static const String orderInProgress = '${basePath}in_progress.svg';
   static const String orderDelivered = '${basePath}delivered.svg';
-  static const String orderShipped = '${basePath}shipped.svg';
+  static const String orderShipped = '${basePath}shipping.svg';
 
   //Profile Screen Icons
   static const String accountDeleted = '${basePath}account_delete.svg';
   static const String signinRequired = '${basePath}account_required.svg';
+
+  //Check out Screen Icons
+  static const String info = '${basePath}info.svg';
+  static const String summary = '${basePath}summary.svg';
+  static const String cart = '${basePath}cart.svg';
+  static const String edit = '${basePath}edit.svg';
+  static const String paymentMethod = '${basePath}payment.svg';
 
   //Others
   static const String share = '${basePath}Share.svg';

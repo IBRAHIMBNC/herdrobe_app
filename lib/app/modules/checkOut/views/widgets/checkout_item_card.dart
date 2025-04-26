@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
-import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/widgets/custom_image.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
@@ -31,7 +30,12 @@ class CheckoutItemCard extends StatelessWidget {
             ),
             child: Row(
               children: [
-                CustomImage.fromSize(titleIcon, size: 20.sp),
+                CustomImage.fromSize(
+                  titleIcon,
+                  size: 20.sp,
+                  fit: BoxFit.contain,
+                  color: AppColors.black,
+                ),
                 8.horizontalSpace,
                 CustomText.boldParagraph(title),
               ],

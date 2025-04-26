@@ -8,7 +8,6 @@ import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/utils/app_images.dart';
-import 'package:herdrobe_app/app/utils/app_text_styles.dart';
 import 'package:herdrobe_app/app/utils/auth_validators.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/custom_text_field.dart';

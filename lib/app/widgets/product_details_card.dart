@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/utils.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
+import 'package:herdrobe_app/app/data/models/cart_item.dart';
 import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
@@ -17,17 +18,22 @@ import 'package:herdrobe_app/app/widgets/my_container.dart';
 import 'package:herdrobe_app/app/widgets/my_list_tile.dart';
 
 class ProductDetailsCard extends StatelessWidget {
-  const ProductDetailsCard({super.key, this.isFavorite = false})
-    : _isListTile = false,
-      _showBorder = true;
+  const ProductDetailsCard({
+    super.key,
+    this.isFavorite = false,
+    this.productModel,
+  }) : _isListTile = false,
+       _showBorder = true;
   final bool? isFavorite;
   final bool _isListTile;
   final bool _showBorder;
+  final ProductModel? productModel;
 
   ProductDetailsCard.listTile({
     super.key,
     this.isFavorite,
     bool showBorder = true,
+    this.productModel,
   }) : _isListTile = true,
        _showBorder = showBorder;
 

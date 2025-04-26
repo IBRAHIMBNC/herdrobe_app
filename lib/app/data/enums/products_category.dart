@@ -60,8 +60,6 @@ enum ProductsCategory {
         return 'Tanning Products';
       case ProductsCategory.medSpaProducts:
         return 'Med Spa Products';
-      default:
-        throw Exception('ProductsCategory not found');
     }
   }
 }

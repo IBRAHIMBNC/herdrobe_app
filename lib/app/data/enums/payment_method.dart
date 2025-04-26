@@ -1,0 +1,9 @@
+import 'package:get/get.dart';
+
+enum PaymentMethodType {
+  easyPaisa,
+  jazzCash,
+  card;
+
+  String get capitalName => name.capitalizeFirst!;
+}

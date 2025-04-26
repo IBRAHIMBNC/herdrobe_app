@@ -101,7 +101,9 @@ class HomeView extends GetView<HomeController> {
                     ),
                     trailing: CircleButton(
                       icon: AppIcons.bell,
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(Routes.NOTIFICATION);
+                      },
                       backgroundColor: AppColors.white.withOpacity(0.2),
                       iconColor: AppColors.white,
                     ),

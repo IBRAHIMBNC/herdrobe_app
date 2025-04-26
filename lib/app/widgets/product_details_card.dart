@@ -20,13 +20,13 @@ class ProductDetailsCard extends StatelessWidget {
   const ProductDetailsCard({super.key, this.isFavorite = false})
     : _isListTile = false,
       _showBorder = true;
-  final bool isFavorite;
+  final bool? isFavorite;
   final bool _isListTile;
   final bool _showBorder;
 
   ProductDetailsCard.listTile({
     super.key,
-    this.isFavorite = false,
+    this.isFavorite,
     bool showBorder = true,
   }) : _isListTile = true,
        _showBorder = showBorder;
@@ -90,15 +90,16 @@ class ProductDetailsCard extends StatelessWidget {
 
             crossAxisAlignment: CrossAxisAlignment.start,
           ),
-          Align(
-            alignment: Alignment.topRight,
-            child: CircleButton(
-              icon: AppIcons.heart,
-              iconColor: AppColors.black,
-              backgroundColor: AppColors.cardColor,
-              radius: 14.r,
+          if (isFavorite != null)
+            Align(
+              alignment: Alignment.topRight,
+              child: CircleButton(
+                icon: AppIcons.heart,
+                iconColor: AppColors.black,
+                backgroundColor: AppColors.cardColor,
+                radius: 14.r,
+              ),
             ),
-          ),
         ],
       ),
     );
@@ -121,20 +122,28 @@ class ProductDetailsCard extends StatelessWidget {
             radius: 0,
             height: 130.h,
             width: double.infinity,
-            child: Container(
-              alignment: Alignment.topRight,
-              color: Colors.transparent,
-              padding: kPadding8.all,
-              child: CircleButton(
-                icon: SvgPicture.asset(
-                  isFavorite ? AppIcons.heartFilled : AppIcons.heart,
-                  height: 13.h,
-                  width: 13.w,
-                  color: isFavorite ? AppColors.brand : AppColors.black,
-                ),
-                radius: 12.r,
-              ),
-            ),
+            child:
+                isFavorite == null
+                    ? null
+                    : Container(
+                      alignment: Alignment.topRight,
+                      color: Colors.transparent,
+                      padding: kPadding8.all,
+                      child: CircleButton(
+                        icon: SvgPicture.asset(
+                          isFavorite == true
+                              ? AppIcons.heartFilled
+                              : AppIcons.heart,
+                          height: 13.h,
+                          width: 13.w,
+                          color:
+                              isFavorite == true
+                                  ? AppColors.brand
+                                  : AppColors.black,
+                        ),
+                        radius: 12.r,
+                      ),
+                    ),
           ),
           4.verticalSpace,
           Row(

@@ -12,6 +12,10 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/navigation/bindings/navigation_binding.dart';
 import '../modules/navigation/views/navigation_view.dart';
+import '../modules/notification/bindings/notification_binding.dart';
+import '../modules/notification/views/notification_view.dart';
+import '../modules/orders/bindings/orders_binding.dart';
+import '../modules/orders/views/orders_view.dart';
 import '../modules/productDetails/bindings/product_details_binding.dart';
 import '../modules/productDetails/views/product_details_view.dart';
 import '../modules/profileCompletion/bindings/profile_completion_binding.dart';
@@ -85,6 +89,16 @@ class AppPages {
       name: _Paths.CHECK_OUT,
       page: () => const CheckOutView(),
       binding: CheckOutBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOTIFICATION,
+      page: () => const NotificationView(),
+      binding: NotificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.ORDERS,
+      page: () => const OrdersView(),
+      binding: OrdersBinding(),
     ),
   ];
 }

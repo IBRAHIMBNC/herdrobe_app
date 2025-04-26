@@ -9,7 +9,7 @@ class NavigationController extends GetxController {
   late final homeCont = Get.find<HomeController>();
   final List<Widget> pages = [
     GetRouterOutlet(initialRoute: Routes.HOME),
-    Center(child: Text('Orders')),
+    GetRouterOutlet(initialRoute: Routes.ORDERS),
     Center(child: Text('Add')),
     Center(child: Text('Chat')),
     Center(child: Text('Profile')),

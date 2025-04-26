@@ -1,13 +1,9 @@
 import 'package:get/get.dart';
-import 'package:herdrobe_app/app/data/enums/payment_method.dart';
 
-class CheckOutController extends GetxController {
-  //TODO: Implement CheckOutController
+class NotificationController extends GetxController {
+  //TODO: Implement NotificationController
 
   final count = 0.obs;
-
-  final Rx<PaymentMethodType> selectedPaymentMethod =
-      PaymentMethodType.easyPaisa.obs;
   @override
   void onInit() {
     super.onInit();

@@ -141,21 +141,24 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
           ),
         ),
       ),
-      bottomNavigationBar: MyContainer(
-        radius: 0,
-        border: BorderSide(color: AppColors.lightGrey, width: 1),
-        padding: kPadding24.all,
-        child: RoundedButton.filledMedium(
-          Row(
-            children: [
-              CustomText.boldParagraph('Chat Now', color: AppColors.white),
-              8.horizontalSpace,
-              Icon(CupertinoIcons.chevron_right, color: AppColors.white),
-            ],
+      bottomNavigationBar: Hero(
+        tag: 'bottomNavigationBar',
+        child: MyContainer(
+          radius: 0,
+          border: BorderSide(color: AppColors.lightGrey, width: 1),
+          padding: kPadding24.all,
+          child: RoundedButton.filledMedium(
+            Row(
+              children: [
+                CustomText.boldParagraph('Chat Now', color: AppColors.white),
+                8.horizontalSpace,
+                Icon(CupertinoIcons.chevron_right, color: AppColors.white),
+              ],
+            ),
+            onTap: () {
+              Get.toNamed(Routes.CHECK_OUT);
+            },
           ),
-          onTap: () {
-            Get.toNamed(Routes.CHECK_OUT);
-          },
         ),
       ),
     );

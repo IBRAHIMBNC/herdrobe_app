@@ -10,6 +10,7 @@ import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/utils/app_text_styles.dart';
 import 'package:herdrobe_app/app/widgets/custom_image.dart';
+import 'package:herdrobe_app/app/widgets/custom_tabbar.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/custom_text_field.dart';
 import 'package:herdrobe_app/app/widgets/multi_color_title.dart';
@@ -92,49 +93,6 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
             Get.toNamed(Routes.WELCOME);
           },
         ),
-      ),
-    );
-  }
-}
-
-class CustomTabbar extends StatelessWidget {
-  const CustomTabbar({
-    super.key,
-    required this.tabs,
-    required this.tabController,
-    this.onTabChanged,
-  });
-
-  final List<Tab> tabs;
-  final TabController tabController;
-  final Function(int)? onTabChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 55.h,
-      decoration: ShapeDecoration(
-        color: AppColors.textField,
-        shape: SmoothRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-      ),
-      padding: EdgeInsets.all(4.r),
-      child: TabBar(
-        labelColor: AppColors.brand,
-        labelStyle: AppTextStyles.paragraph14,
-        unselectedLabelColor: AppColors.textColor1,
-        dividerColor: Colors.transparent,
-        padding: EdgeInsets.zero,
-        indicatorSize: TabBarIndicatorSize.tab,
-        indicator: ShapeDecoration(
-          shape: SmoothRectangleBorder(
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          color: AppColors.white,
-        ),
-        indicatorColor: Colors.white,
-        tabs: tabs,
-        controller: tabController,
-        onTap: onTabChanged,
       ),
     );
   }

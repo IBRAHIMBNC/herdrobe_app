@@ -42,6 +42,19 @@ class MyApp extends StatelessWidget {
             title: "HERDROBE",
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
+              radioTheme: RadioThemeData(
+                visualDensity: VisualDensity.compact,
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                overlayColor: WidgetStatePropertyAll(Colors.amber),
+                fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+                  if (states.contains(WidgetState.disabled)) {
+                    return AppColors.grey;
+                  } else if (states.contains(WidgetState.selected)) {
+                    return AppColors.brand;
+                  }
+                  return Colors.grey;
+                }),
+              ),
               useMaterial3: true,
               fontFamily: kcFontFamily,
               textTheme: TextTheme(labelLarge: AppTextStyles.largeHeading32),

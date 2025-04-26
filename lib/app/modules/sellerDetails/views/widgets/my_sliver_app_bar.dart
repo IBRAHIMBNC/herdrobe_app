@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -91,7 +92,7 @@ class MySliverAppBar extends GetView<SellerDetailsController> {
         onTap: () {
           Get.back();
         },
-        icon: const Icon(Icons.arrow_back, color: AppColors.black),
+        icon: Icon(CupertinoIcons.chevron_left, color: AppColors.black),
       ),
       automaticallyImplyLeading: false,
       scrolledUnderElevation: 6,

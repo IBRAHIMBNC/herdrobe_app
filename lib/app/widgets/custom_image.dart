@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart'; // Import flutter_svg
+import 'package:lottie/lottie.dart'; // Import lottie package
 import 'package:shimmer/shimmer.dart';
 import 'package:smooth_corner/smooth_corner.dart';
 
@@ -100,6 +101,10 @@ class CustomImage extends StatelessWidget {
   }
 
   Widget _buildImage() {
+    // Check if image path is a Lottie animation
+    if (_isLottieAnimation(imagePath)) {
+      return Lottie.asset(imagePath, width: width, height: height, fit: fit);
+    }
     // Check if image path is an SVG
     if (_isSvgImage(imagePath)) {
       // Check if it's a network SVG
@@ -241,5 +246,10 @@ class CustomImage extends StatelessWidget {
           borderRadius: borderRadius,
           side: border ?? BorderSide.none,
         );
+  }
+
+  // Helper method to check if the path is a Lottie animation
+  bool _isLottieAnimation(String path) {
+    return path.toLowerCase().endsWith('.json');
   }
 }

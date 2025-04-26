@@ -64,23 +64,16 @@ class MyListTile extends StatelessWidget {
                 if (title is Widget) ...[
                   title as Widget,
                 ] else if (title is String)
-                  CustomText(
-                    title as String,
-                    size: 16,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.textColor2,
-                  )
+                  CustomText.boldParagraph(title as String)
                 else
                   Container(),
                 if (verticalSpacing != null) verticalSpacing!.verticalSpace,
                 if (subtitle is Widget) ...[
                   subtitle as Widget,
                 ] else if (subtitle is String)
-                  CustomText(
+                  CustomText.small12(
                     subtitle as String,
-                    size: 10,
                     color: AppColors.textColor2,
-                    height: 1.4,
                     textAlign: TextAlign.left,
                   )
                 else

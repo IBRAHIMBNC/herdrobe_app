@@ -7,6 +7,7 @@ import 'package:herdrobe_app/app/modules/profileCompletion/views/profile_complet
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/widgets/address_details_card.dart';
 import 'package:herdrobe_app/app/widgets/circle_button.dart';
+import 'package:herdrobe_app/app/widgets/custom_tabbar.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/generic_bottom_sheet.dart';
 import 'package:herdrobe_app/app/widgets/my_list_tile.dart';
@@ -51,13 +52,8 @@ class SearchFilterSheet extends GetView<SearchController> {
               ],
             ),
             10.verticalSpace,
-            Builder(
-              builder: (ctx) {
-                return CustomTabbar(
-                  tabs: [Tab(text: 'Verified'), Tab(text: 'Unverified')],
-                  tabController: DefaultTabController.of(ctx),
-                );
-              },
+            CustomTabbar(
+              tabs: [Tab(text: 'Verified'), Tab(text: 'Unverified')],
             ),
             16.verticalSpace,
             CustomText.paragraph('Type'),

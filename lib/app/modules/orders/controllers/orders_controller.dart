@@ -1,6 +1,4 @@
 import 'package:get/get.dart';
-import 'package:herdrobe_app/app/data/enums/order_status.dart';
-import 'package:herdrobe_app/app/modules/orders/views/orders_view.dart';
 
 class OrdersController extends GetxController {
   // final Rx<OrderStatusTab> selectTab = OrderStatusTab.all.obs;

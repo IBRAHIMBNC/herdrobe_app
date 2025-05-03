@@ -1,9 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/utils.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/data/models/cart_item.dart';
@@ -100,8 +98,10 @@ class ProductDetailsCard extends StatelessWidget {
             Align(
               alignment: Alignment.topRight,
               child: CircleButton(
-                icon: AppIcons.heart,
-                iconColor: AppColors.black,
+                icon:
+                    isFavorite == false ? AppIcons.heart : AppIcons.heartFilled,
+                iconColor:
+                    isFavorite == false ? AppColors.black : AppColors.brand,
                 backgroundColor: AppColors.cardColor,
                 radius: 14.r,
               ),

@@ -5,12 +5,8 @@ import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/modules/sellerDetails/views/widgets/my_sliver_app_bar.dart';
-import 'package:herdrobe_app/app/utils/app_colors.dart';
-import 'package:herdrobe_app/app/utils/app_icons.dart';
-import 'package:herdrobe_app/app/widgets/custom_image.dart';
 
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
-import 'package:herdrobe_app/app/widgets/my_container.dart';
 import 'package:herdrobe_app/app/widgets/product_details_card.dart';
 
 import '../controllers/seller_details_controller.dart';

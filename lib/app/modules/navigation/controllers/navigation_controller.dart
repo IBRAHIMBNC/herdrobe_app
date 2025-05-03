@@ -12,7 +12,7 @@ class NavigationController extends GetxController {
     GetRouterOutlet(initialRoute: Routes.ORDERS),
     Center(child: Text('Add')),
     Center(child: Text('Chat')),
-    Center(child: Text('Profile')),
+    GetRouterOutlet(initialRoute: Routes.PROFILE),
   ];
 
   onTabChanged(int index) {

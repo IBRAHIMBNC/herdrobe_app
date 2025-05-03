@@ -50,8 +50,17 @@ class AppIcons {
   static const String edit = '${basePath}edit.svg';
   static const String paymentMethod = '${basePath}payment.svg';
 
+  //profile Scren Icons
+  static const String faqs = '${basePath}faqs.svg';
+  static const String settings = '${basePath}settings.svg';
+  static const String document = '${basePath}document.svg';
+  static const String support = '${basePath}support.svg';
+  static const String logout = '${basePath}logout.svg';
+  static const String profileUser = '${basePath}profile_user.svg';
+
   //Others
   static const String share = '${basePath}Share.svg';
   static const String recent = '${basePath}recent.svg';
   static const String filter = '${basePath}filter.svg';
+  static const String alert = '${basePath}alert.svg';
 }

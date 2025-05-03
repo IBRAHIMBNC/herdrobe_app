@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:herdrobe_app/app/data/models/order.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
+import 'package:herdrobe_app/app/widgets/bottom_sheets/product_review_sheet.dart';
 import 'package:herdrobe_app/app/widgets/custom_image.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
@@ -45,11 +47,23 @@ class MyOrderContainer extends StatelessWidget {
                   'Order ID: ${44444}',
                   color: AppColors.textColor1,
                 ),
-                // CustomText.small12(
-                //   DateFormat(
-                //     'MMM dd, yyyy',
-                //   ).format(orderModel.dateCreated!.toDate()),
-                // ),
+                Spacer(),
+                MyContainer(
+                  onTap: () {
+                    Get.bottomSheet(
+                      GiveProductReviewSheet(),
+                      isScrollControlled: true,
+                    );
+                  },
+                  color: AppColors.brand.withValues(alpha: 0.1),
+                  padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 8.w),
+                  border: BorderSide(color: AppColors.brand, width: 1),
+                  child: CustomText.small12(
+                    'Leave Review',
+
+                    color: AppColors.brand,
+                  ),
+                ),
               ],
             ),
             const Divider(color: AppColors.lightGrey),

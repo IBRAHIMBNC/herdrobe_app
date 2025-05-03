@@ -17,6 +17,12 @@ abstract class Routes {
   static const NOTIFICATION = _Paths.NOTIFICATION;
   static const ORDERS = _Paths.ORDERS;
   static const ORDER_DETAILS = _Paths.ORDER_DETAILS;
+  static const PROFILE = _Paths.PROFILE;
+  static const ACCOUNT = _Paths.ACCOUNT;
+  static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
+  static const DELETE_ACCOUNT = _Paths.DELETE_ACCOUNT;
+  static const WHISHLIST = _Paths.WHISHLIST;
+  static const YOUR_POST = _Paths.YOUR_POST;
 }
 
 abstract class _Paths {
@@ -35,4 +41,10 @@ abstract class _Paths {
   static const NOTIFICATION = '/notification';
   static const ORDERS = '/orders';
   static const ORDER_DETAILS = '/order-details';
+  static const PROFILE = '/profile';
+  static const ACCOUNT = '/account';
+  static const CHANGE_PASSWORD = '/change-password';
+  static const DELETE_ACCOUNT = '/delete-account';
+  static const WHISHLIST = '/whishlist';
+  static const YOUR_POST = '/your-post';
 }

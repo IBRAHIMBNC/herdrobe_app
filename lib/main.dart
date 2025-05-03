@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,7 +7,6 @@ import 'package:herdrobe_app/app/constants/strings.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_text_styles.dart';
 import 'package:herdrobe_app/app/utils/rounded_button_styles.dart';
-import 'package:herdrobe_app/app/widgets/my_rounded_button.dart';
 
 import 'app/routes/app_pages.dart';
 

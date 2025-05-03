@@ -1,23 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
-import 'package:herdrobe_app/app/data/enums/order_status.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/data/models/order.dart';
 import 'package:herdrobe_app/app/modules/orders/views/widgets/order_card.dart';
-import 'package:herdrobe_app/app/modules/profileCompletion/views/profile_completion_view.dart';
 import 'package:herdrobe_app/app/routes/app_pages.dart';
-import 'package:herdrobe_app/app/utils/app_colors.dart';
-import 'package:herdrobe_app/app/utils/app_icons.dart';
-import 'package:herdrobe_app/app/widgets/custom_image.dart';
 import 'package:herdrobe_app/app/widgets/custom_tabbar.dart';
-import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/my_appbar.dart';
-import 'package:herdrobe_app/app/widgets/my_container.dart';
-import 'package:herdrobe_app/app/widgets/product_details_card.dart';
-import 'package:intl/intl.dart';
 import '../controllers/orders_controller.dart';
 
 class OrdersView extends GetView<OrdersController> {
@@ -33,7 +23,7 @@ class OrdersView extends GetView<OrdersController> {
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(50.h),
             child: Padding(
-              padding: kPadding24.hp,
+              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 8.h),
               child: CustomTabbar(
                 tabs: [
                   Tab(text: 'All'),

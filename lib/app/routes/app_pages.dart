@@ -1,13 +1,19 @@
 import 'package:get/get.dart';
 
+import '../modules/account/bindings/account_binding.dart';
+import '../modules/account/views/account_view.dart';
 import '../modules/auth/forgotPassword/bindings/forgot_password_binding.dart';
 import '../modules/auth/forgotPassword/views/forgot_password_view.dart';
 import '../modules/auth/login/bindings/login_binding.dart';
 import '../modules/auth/login/views/login_view.dart';
 import '../modules/auth/signUp/bindings/sign_up_binding.dart';
 import '../modules/auth/signUp/views/sign_up_view.dart';
+import '../modules/changePassword/bindings/change_password_binding.dart';
+import '../modules/changePassword/views/change_password_view.dart';
 import '../modules/checkOut/bindings/check_out_binding.dart';
 import '../modules/checkOut/views/check_out_view.dart';
+import '../modules/deleteAccount/bindings/delete_account_binding.dart';
+import '../modules/deleteAccount/views/delete_account_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/navigation/bindings/navigation_binding.dart';
@@ -20,6 +26,8 @@ import '../modules/orders/bindings/orders_binding.dart';
 import '../modules/orders/views/orders_view.dart';
 import '../modules/productDetails/bindings/product_details_binding.dart';
 import '../modules/productDetails/views/product_details_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
 import '../modules/profileCompletion/bindings/profile_completion_binding.dart';
 import '../modules/profileCompletion/views/profile_completion_view.dart';
 import '../modules/searchProduct/bindings/search_product_binding.dart';
@@ -28,6 +36,10 @@ import '../modules/sellerDetails/bindings/seller_details_binding.dart';
 import '../modules/sellerDetails/views/seller_details_view.dart';
 import '../modules/welcome/bindings/welcome_binding.dart';
 import '../modules/welcome/views/welcome_view.dart';
+import '../modules/whishlist/bindings/whishlist_binding.dart';
+import '../modules/whishlist/views/whishlist_view.dart';
+import '../modules/yourPost/bindings/your_post_binding.dart';
+import '../modules/yourPost/views/your_post_view.dart';
 
 part 'app_routes.dart';
 
@@ -106,6 +118,36 @@ class AppPages {
       name: _Paths.ORDER_DETAILS,
       page: () => const OrderDetailsView(),
       binding: OrderDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.ACCOUNT,
+      page: () => const AccountView(),
+      binding: AccountBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHANGE_PASSWORD,
+      page: () => const ChangePasswordView(),
+      binding: ChangePasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.DELETE_ACCOUNT,
+      page: () => const DeleteAccountView(),
+      binding: DeleteAccountBinding(),
+    ),
+    GetPage(
+      name: _Paths.WHISHLIST,
+      page: () => const WhishlistView(),
+      binding: WhishlistBinding(),
+    ),
+    GetPage(
+      name: _Paths.YOUR_POST,
+      page: () => const YourPostView(),
+      binding: YourPostBinding(),
     ),
   ];
 }

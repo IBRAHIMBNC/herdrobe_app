@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:herdrobe_app/app/constants/paddings.dart';
-import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
+import 'package:herdrobe_app/app/widgets/circle_button.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -41,22 +40,19 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          12.horizontalSpace,
           showBackButton
               ? Padding(
                 padding: EdgeInsets.symmetric(
                   vertical: preferredSize.height / 7,
                 ),
-                child: InkWell(
-                  onTap: onBackPressed ?? () => Navigator.of(context).pop(),
-                  borderRadius: BorderRadius.circular(50),
-                  child: CircleAvatar(
-                    backgroundColor: AppColors.cardColor,
-                    child: Icon(
-                      Icons.arrow_back_ios_rounded,
-                      size: 18,
-                      color: iconColor,
-                    ),
+                child: CircleButton(
+                  icon: Icon(
+                    Icons.arrow_back_ios_rounded,
+                    size: 18,
+                    color: iconColor,
                   ),
+                  onTap: onBackPressed ?? () => Navigator.of(context).pop(),
                 ),
               )
               : SizedBox.shrink(),

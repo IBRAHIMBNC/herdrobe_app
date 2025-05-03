@@ -9,6 +9,7 @@ import 'package:herdrobe_app/app/modules/productDetails/views/widgets/reviews_pr
 import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
+import 'package:herdrobe_app/app/utils/my_utils.dart';
 import 'package:herdrobe_app/app/widgets/circle_button.dart';
 import 'package:herdrobe_app/app/widgets/custom_image.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
@@ -108,9 +109,10 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
                 child: Column(
                   children: [
                     MyListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: AppColors.brand,
-                        radius: 20.r,
+                      leading: CustomImage.fromSize(
+                        MyUtils.getTempLink(),
+                        radius: 70.r,
+                        size: 40.w,
                       ),
                       title: CustomText.boldParagraph('The groom house'),
                       verticalSpacing: kPadding4.h,

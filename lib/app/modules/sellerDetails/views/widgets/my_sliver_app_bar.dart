@@ -22,6 +22,8 @@ class MySliverAppBar extends GetView<SellerDetailsController> {
       pinned: true, // App bar stays visible at the top when collapsed
       snap: false, // Set to true if you want the app bar to snap into view
       elevation: 0,
+
+      stretch: true,
       flexibleSpace: FlexibleSpaceBar(
         collapseMode: CollapseMode.pin,
         background: Column(
@@ -38,8 +40,9 @@ class MySliverAppBar extends GetView<SellerDetailsController> {
                 children: [
                   Align(
                     heightFactor: 0,
-                    child: CircleAvatar(
-                      backgroundColor: AppColors.brand,
+                    child: CustomImage.fromSize(
+                      MyUtils.getTempLink(),
+                      size: 90.w,
                       radius: 45.r,
                     ),
                   ),

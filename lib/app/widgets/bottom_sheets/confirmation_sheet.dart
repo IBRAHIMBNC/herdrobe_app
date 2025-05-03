@@ -40,7 +40,7 @@ class ConfirmationSheet extends StatelessWidget {
           if (imagePath != null)
             CustomImage.fromSize(
               imagePath!,
-              size: size ?? 140.sp,
+              size: size ?? 80.sp,
               fit: BoxFit.contain,
               color: iconColor,
             ),

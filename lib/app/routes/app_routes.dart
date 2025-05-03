@@ -23,6 +23,10 @@ abstract class Routes {
   static const DELETE_ACCOUNT = _Paths.DELETE_ACCOUNT;
   static const WHISHLIST = _Paths.WHISHLIST;
   static const YOUR_POST = _Paths.YOUR_POST;
+  static const ADD_EDIT_POST = _Paths.ADD_EDIT_POST;
+  static const PICK_LOCATION_IN_MAP = _Paths.PICK_LOCATION_IN_MAP;
+  static const F_A_QS = _Paths.F_A_QS;
+  static const PRIVACY_POLICY = _Paths.PRIVACY_POLICY;
 }
 
 abstract class _Paths {
@@ -47,4 +51,8 @@ abstract class _Paths {
   static const DELETE_ACCOUNT = '/delete-account';
   static const WHISHLIST = '/whishlist';
   static const YOUR_POST = '/your-post';
+  static const ADD_EDIT_POST = '/add-edit-post';
+  static const PICK_LOCATION_IN_MAP = '/pick-location-in-map';
+  static const F_A_QS = '/f-a-qs';
+  static const PRIVACY_POLICY = '/privacy-policy';
 }

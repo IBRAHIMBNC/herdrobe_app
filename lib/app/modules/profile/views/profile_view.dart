@@ -103,12 +103,16 @@ class ProfileView extends GetView<ProfileController> {
                   _buildSettingButton(
                     title: 'FAQs',
                     path: AppIcons.faqs,
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(Routes.F_A_QS);
+                    },
                   ),
                   _buildSettingButton(
                     title: 'Privacy Policy',
                     path: AppIcons.document,
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(Routes.PRIVACY_POLICY);
+                    },
                   ),
                 ],
               ),

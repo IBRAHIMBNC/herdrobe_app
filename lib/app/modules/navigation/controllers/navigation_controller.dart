@@ -17,7 +17,7 @@ class NavigationController extends GetxController {
 
   onTabChanged(int index) {
     if (index == 2) {
-      // Get.toNamed(Routes.HOME);
+      Get.toNamed(Routes.ADD_EDIT_POST);
       return;
     }
     pageController.animateToPage(

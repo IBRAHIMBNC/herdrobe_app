@@ -150,6 +150,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         if (widget.keyboardType == TextInputType.number)
           CurrencyInputFormatter(),
       ],
+
       decoration: InputDecoration(
         errorText: showErrorMessage ? widget.errorText : null,
         contentPadding: EdgeInsets.symmetric(
@@ -169,10 +170,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
         constraints: BoxConstraints(minHeight: widget.size.height.h),
         alignLabelWithHint: true,
         suffixText: widget.suffixText,
-        label:
-            widget.labelText == null
-                ? null
-                : CustomText.small12(widget.labelText!),
+        // label: widget.labelText == null ? null : Text(widget.labelText!),
+        // labelStyle: AppTextStyles.paragraph14.copyWith(
+        //   color: AppColors.textColor2,
+        // ),
+        labelText: widget.labelText,
+        labelStyle: AppTextStyles.paragraph14.copyWith(
+          color: AppColors.textColor2,
+        ),
+
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius!),
           borderSide: const BorderSide(color: Colors.red),

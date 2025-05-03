@@ -1,7 +1,11 @@
 import 'package:get/get.dart';
 
+import '../modules/FAQs/bindings/f_a_qs_binding.dart';
+import '../modules/FAQs/views/f_a_qs_view.dart';
 import '../modules/account/bindings/account_binding.dart';
 import '../modules/account/views/account_view.dart';
+import '../modules/addEditPost/bindings/add_edit_post_binding.dart';
+import '../modules/addEditPost/views/add_edit_post_view.dart';
 import '../modules/auth/forgotPassword/bindings/forgot_password_binding.dart';
 import '../modules/auth/forgotPassword/views/forgot_password_view.dart';
 import '../modules/auth/login/bindings/login_binding.dart';
@@ -24,6 +28,10 @@ import '../modules/orderDetails/bindings/order_details_binding.dart';
 import '../modules/orderDetails/views/order_details_view.dart';
 import '../modules/orders/bindings/orders_binding.dart';
 import '../modules/orders/views/orders_view.dart';
+import '../modules/pickLocationInMap/bindings/pick_location_in_map_binding.dart';
+import '../modules/pickLocationInMap/views/pick_location_in_map_view.dart';
+import '../modules/privacyPolicy/bindings/privacy_policy_binding.dart';
+import '../modules/privacyPolicy/views/privacy_policy_view.dart';
 import '../modules/productDetails/bindings/product_details_binding.dart';
 import '../modules/productDetails/views/product_details_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
@@ -148,6 +156,26 @@ class AppPages {
       name: _Paths.YOUR_POST,
       page: () => const YourPostView(),
       binding: YourPostBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_EDIT_POST,
+      page: () => const AddEditPostView(),
+      binding: AddEditPostBinding(),
+    ),
+    GetPage(
+      name: _Paths.PICK_LOCATION_IN_MAP,
+      page: () => const PickLocationInMapView(),
+      binding: PickLocationInMapBinding(),
+    ),
+    GetPage(
+      name: _Paths.F_A_QS,
+      page: () => const FAQsView(),
+      binding: FAQsBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRIVACY_POLICY,
+      page: () => const PrivacyPolicyView(),
+      binding: PrivacyPolicyBinding(),
     ),
   ];
 }

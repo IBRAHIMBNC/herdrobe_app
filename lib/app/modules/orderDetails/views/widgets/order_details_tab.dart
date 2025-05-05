@@ -19,7 +19,7 @@ class OrderDetailsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final order = OrderModel.empty();
+    final order = OrderModel.empty;
     return SingleChildScrollView(
       child: Padding(
         padding: kPadding24.all,

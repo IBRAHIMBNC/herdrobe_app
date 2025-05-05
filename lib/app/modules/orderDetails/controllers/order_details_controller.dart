@@ -6,7 +6,7 @@ import 'package:herdrobe_app/app/modules/orderDetails/views/widgets/track_order_
 
 class OrderDetailsController extends GetxController {
   final RxInt currentIndex = 0.obs;
-  final OrderModel order = OrderModel.empty();
+  final OrderModel order = OrderModel.empty;
 
   final List<Widget> tabs = [const OrderDetailsTab(), const TrackOrderWidget()];
 

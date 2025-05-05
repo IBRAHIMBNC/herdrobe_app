@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/strings.dart';
+import 'package:herdrobe_app/app/data/models/product.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_text_styles.dart';
 import 'package:herdrobe_app/app/utils/rounded_button_styles.dart';
@@ -12,6 +13,7 @@ import 'app/routes/app_pages.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   // debugRepaintRainbowEnabled = true;
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(

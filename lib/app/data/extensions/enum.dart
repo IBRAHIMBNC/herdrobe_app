@@ -1,4 +1,4 @@
-extension EnumExt<T extends Enum> on Enum {
+extension EnumExt on Enum {
   String get capitalizeFirst {
     final str = name;
     if (str.isEmpty) {

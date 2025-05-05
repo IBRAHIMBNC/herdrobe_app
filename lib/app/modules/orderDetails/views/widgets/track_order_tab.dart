@@ -15,7 +15,7 @@ class TrackOrderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final order = OrderModel.empty();
+    final order = OrderModel.empty;
     int index = 0;
 
     switch (order.status) {

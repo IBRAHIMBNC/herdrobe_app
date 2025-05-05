@@ -25,7 +25,7 @@ class AddEditPostController extends GetxController {
 
   bool hideIdentity = false;
 
-  RentType rentType = RentType.day;
+  RentType rentType = RentType.perDay;
 
   addPost() {
     if (formKey.currentState!.validate()) {

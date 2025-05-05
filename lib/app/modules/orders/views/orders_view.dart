@@ -42,7 +42,7 @@ class OrdersView extends GetView<OrdersController> {
                 onTap: () {
                   Get.toNamed(Routes.ORDER_DETAILS);
                 },
-                orderModel: OrderModel.empty(),
+                orderModel: OrderModel.empty,
               ),
             ],
           ),

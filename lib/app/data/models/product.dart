@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:equatable/equatable.dart';
 import 'package:herdrobe_app/app/data/enums/product_type.dart';
 import 'package:herdrobe_app/app/data/enums/products_category.dart';
-import 'package:herdrobe_app/app/data/enums/rent_type.dart';
+import 'package:herdrobe_app/app/data/enums/rent_period.dart';
 import 'package:herdrobe_app/app/data/enums/size.dart';
 import 'package:herdrobe_app/app/utils/safe_parsing.dart';
 
@@ -20,7 +20,10 @@ class ProductModel extends Equatable {
   final List<String> reviewsIds;
   final ProductType productType;
   final List<ProductSize> availableSizes;
-  final RentType? rentType;
+  final RentPeriod? rentPeriod;
+  final String? contactNumber;
+  final DateTime createdAt;
+  // final
   // final double? depositAmount;
   // final String? swapCondition;r
 
@@ -38,7 +41,9 @@ class ProductModel extends Equatable {
     this.reviewsIds = const [],
     required this.productType,
     this.availableSizes = const [],
-    this.rentType,
+    this.rentPeriod,
+    this.contactNumber,
+    required this.createdAt,
     // this.depositAmount,
     // this.swapCondition,
   });
@@ -58,6 +63,10 @@ class ProductModel extends Equatable {
     List<String> reviewsIds = const [],
     int? totalSold,
     bool isDeleted = false,
+    String? contactNumber,
+    DateTime? createdAt,
+    // this.depositAmount,
+    // this.swapCondition,
   }) {
     return ProductModel._(
       id: id,
@@ -73,7 +82,9 @@ class ProductModel extends Equatable {
       reviewsIds: reviewsIds,
       isDeleted: isDeleted,
       // Rent/Swap specific fields are null
-      rentType: null,
+      rentPeriod: null,
+      contactNumber: contactNumber,
+      createdAt: createdAt ?? DateTime.now(),
       // depositAmount: null,
       // swapCondition: null,
     );
@@ -89,13 +100,15 @@ class ProductModel extends Equatable {
     required List<String> imageUrls,
     required List<ProductSize> availableSizes,
     required int stock,
-    required RentType rentType,
+    required RentPeriod rentType,
     required double depositAmount,
     ProductsCategory? category,
     double rating = 0,
     List<String> reviewsIds = const [],
     int? totalSold,
     bool isDeleted = false,
+    String? contactNumber,
+    DateTime? createdAt,
   }) {
     return ProductModel._(
       id: id,
@@ -107,11 +120,13 @@ class ProductModel extends Equatable {
       availableSizes: availableSizes,
       category: category,
       productType: ProductType.rent,
-      rentType: rentType,
+      rentPeriod: rentType,
       // depositAmount: depositAmount,
       rating: rating,
       reviewsIds: reviewsIds,
       isDeleted: isDeleted,
+      contactNumber: contactNumber,
+      createdAt: createdAt ?? DateTime.now(),
       // swapCondition: null,
     );
   }
@@ -132,6 +147,8 @@ class ProductModel extends Equatable {
     List<String> reviewsIds = const [],
     int? totalSold,
     bool isDeleted = false,
+    String? contactNumber,
+    DateTime? createdAt,
   }) {
     return ProductModel._(
       id: id,
@@ -148,10 +165,136 @@ class ProductModel extends Equatable {
       reviewsIds: reviewsIds,
       isDeleted: isDeleted,
       // Rent specific fields are null
-      rentType: null,
+      rentPeriod: null,
+      contactNumber: contactNumber,
+      createdAt: createdAt ?? DateTime.now(),
       // depositAmount: null,
     );
   }
+
+  ProductModel copyWith({
+    String? id,
+    String? sellerUid,
+    String? name,
+    String? description,
+    double? rating,
+    double? price,
+    List<String>? imageUrls,
+    bool? isDeleted,
+    ProductsCategory? category,
+    List<String>? reviewsIds,
+    ProductType? productType,
+    List<ProductSize>? availableSizes,
+    int? stock,
+    int? totalSold,
+    RentPeriod? rentType,
+    double? depositAmount,
+    List<String>? acceptedCategories,
+    String? swapCondition,
+    String? contactNumber,
+    DateTime? createdAt,
+  }) {
+    // Use the private constructor for copyWith as well
+    return ProductModel._(
+      id: id ?? this.id,
+      sellerUid: sellerUid ?? this.sellerUid,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      rating: rating ?? this.rating,
+      price: price ?? this.price,
+      imageUrls: imageUrls ?? this.imageUrls,
+      isDeleted: isDeleted ?? this.isDeleted,
+      category: category ?? this.category,
+      reviewsIds: reviewsIds ?? this.reviewsIds,
+      productType: productType ?? this.productType,
+      availableSizes: availableSizes ?? this.availableSizes,
+      rentPeriod: rentType ?? this.rentPeriod,
+      contactNumber: contactNumber ?? this.contactNumber,
+      createdAt: createdAt ?? this.createdAt,
+      // depositAmount: depositAmount ?? this.depositAmount,
+      // swapCondition: swapCondition ?? this.swapCondition,
+    );
+  }
+
+  /// Converts this ProductModel instance to a Map (e.g., for database storage).
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id, // Changed 'uid' to 'id' to match field name
+      'sellerUid': sellerUid, // Changed 'selleruid' to 'sellerUid'
+      'name': name,
+      'description': description,
+      'rating': rating,
+      'price': price,
+      'imageUrls': imageUrls,
+      'isDeleted': isDeleted,
+      'category': category?.name, // Store enum name
+      'reviewsIds': reviewsIds,
+      'productType': productType.name, // Store enum name
+      'availableSizes':
+          availableSizes.map((size) => size.name).toList(), // Store enum names
+      'contactNumber': contactNumber,
+      'rentPeriod': rentPeriod?.name,
+      'createdAt': createdAt.millisecondsSinceEpoch,
+    };
+  }
+
+  /// Creates a ProductModel instance from a Map (e.g., from database).
+  factory ProductModel.fromMap(Map<String, dynamic> map) {
+    // Helper function for safe enum parsing from String name
+
+    return ProductModel._(
+      id: map['id'] as String? ?? '', // Use 'id' key
+      sellerUid: map['sellerUid'] as String? ?? '', // Use 'sellerUid' key
+      name: map['name'] as String? ?? '',
+      description: map['description'] as String? ?? '',
+      rating: SafeParsing.parseDouble(map['rating']),
+      price: SafeParsing.parseDouble(map['price']),
+      imageUrls: SafeParsing.parseList(
+        map['imageUrls'],
+        (url) => url.toString(),
+      ),
+      isDeleted: SafeParsing.parseBool(map['isDeleted']),
+      category: ProductsCategory.fromString(
+        map['category'] as String?,
+      ), // Default to null if parsing fails
+      // reviewsIds: List<String>.from(
+      //   (map['reviewsIds'] as List<dynamic>? ?? []).map((e) => e.toString()),
+      // ),
+      reviewsIds: SafeParsing.parseList(
+        map['reviewsIds'],
+        (id) => id.toString(),
+      ),
+      productType:
+          SafeParsing.parseEnum(map['productType'], ProductType.values) ??
+          ProductType.sell, // Default to sell if parsing fails
+      availableSizes: SafeParsing.parseList(
+        map['availableSizes'],
+        (size) => ProductSize.fromString(size),
+      ),
+      rentPeriod: SafeParsing.parseEnum(map['rentType'], RentPeriod.values),
+      contactNumber: map['contactNumber'] as String?,
+      createdAt: SafeParsing.parseDate(map['createdAt']) ?? DateTime.now(),
+    );
+  }
+
+  @override
+  List<Object?> get props => [
+    id,
+    sellerUid,
+    name,
+    description,
+    rating,
+    price,
+    isDeleted,
+    imageUrls,
+    category,
+    reviewsIds,
+    productType,
+    availableSizes,
+    rentPeriod,
+    contactNumber,
+    createdAt,
+  ];
 
   // Factory constructor for creating an empty ProductModel
   factory ProductModel.empty() {
@@ -164,8 +307,8 @@ class ProductModel extends Equatable {
       price: 0.0,
       imageUrls: [],
       productType: ProductType.sell, // Default to sell or handle as needed
-
       availableSizes: [],
+      createdAt: DateTime.now(),
     );
   }
 
@@ -218,7 +361,7 @@ class ProductModel extends Equatable {
           ],
           availableSizes: availableSizes,
           stock: random.nextInt(10) + 1, // Lower stock for rentals typically
-          rentType: RentType.values[random.nextInt(RentType.values.length)],
+          rentType: RentPeriod.values[random.nextInt(RentPeriod.values.length)],
           depositAmount: (random.nextDouble() * 50).roundToDouble() + 20,
           category:
               ProductsCategory.values[random.nextInt(
@@ -266,128 +409,4 @@ class ProductModel extends Equatable {
         );
     }
   }
-
-  ProductModel copyWith({
-    String? id,
-    String? sellerUid,
-    String? name,
-    String? description,
-    double? rating,
-    double? price,
-    List<String>? imageUrls,
-    bool? isDeleted,
-    ProductsCategory? category,
-    List<String>? reviewsIds,
-    ProductType? productType,
-    List<ProductSize>? availableSizes,
-    int? stock,
-    int? totalSold,
-    RentType? rentType,
-    double? depositAmount,
-    List<String>? acceptedCategories,
-    String? swapCondition,
-  }) {
-    // Use the private constructor for copyWith as well
-    return ProductModel._(
-      id: id ?? this.id,
-      sellerUid: sellerUid ?? this.sellerUid,
-      name: name ?? this.name,
-      description: description ?? this.description,
-      rating: rating ?? this.rating,
-      price: price ?? this.price,
-      imageUrls: imageUrls ?? this.imageUrls,
-      isDeleted: isDeleted ?? this.isDeleted,
-      category: category ?? this.category,
-      reviewsIds: reviewsIds ?? this.reviewsIds,
-      productType: productType ?? this.productType,
-      availableSizes: availableSizes ?? this.availableSizes,
-      rentType: rentType ?? this.rentType,
-      // depositAmount: depositAmount ?? this.depositAmount,
-      // swapCondition: swapCondition ?? this.swapCondition,
-    );
-  }
-
-  /// Converts this ProductModel instance to a Map (e.g., for database storage).
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id, // Changed 'uid' to 'id' to match field name
-      'sellerUid': sellerUid, // Changed 'selleruid' to 'sellerUid'
-      'name': name,
-      'description': description,
-      'rating': rating,
-      'price': price,
-      'imageUrls': imageUrls,
-      'isDeleted': isDeleted,
-      'category': category?.name, // Store enum name
-      'reviewsIds': reviewsIds,
-      'productType': productType.name, // Store enum name
-      'availableSizes':
-          availableSizes.map((size) => size.name).toList(), // Store enum names
-      // Conditionally add rent/swap specific fields
-      // if (productType == ProductType.rent) ...{
-      //   'rentType': rentType?.name,
-      //   'depositAmount': depositAmount,
-      // },
-      // if (productType == ProductType.swap) ...{'swapCondition': swapCondition},
-    };
-  }
-
-  /// Creates a ProductModel instance from a Map (e.g., from database).
-  factory ProductModel.fromMap(Map<String, dynamic> map) {
-    // Helper function for safe enum parsing from String name
-
-    return ProductModel._(
-      id: map['id'] as String? ?? '', // Use 'id' key
-      sellerUid: map['sellerUid'] as String? ?? '', // Use 'sellerUid' key
-      name: map['name'] as String? ?? '',
-      description: map['description'] as String? ?? '',
-      rating: SafeParsing.parseDouble(map['rating']),
-      price: SafeParsing.parseDouble(map['price']),
-      imageUrls: SafeParsing.parseList(
-        map['imageUrls'],
-        (url) => url.toString(),
-      ),
-      isDeleted: SafeParsing.parseBool(map['isDeleted']) ?? false,
-      category: ProductsCategory.fromString(
-        map['category'] as String?,
-      ), // Default to null if parsing fails
-      // reviewsIds: List<String>.from(
-      //   (map['reviewsIds'] as List<dynamic>? ?? []).map((e) => e.toString()),
-      // ),
-      reviewsIds: SafeParsing.parseList(
-        map['reviewsIds'],
-        (id) => id.toString(),
-      ),
-      productType:
-          SafeParsing.parseEnum(map['productType'], ProductType.values) ??
-          ProductType.sell, // Default to sell if parsing fails
-      availableSizes: SafeParsing.parseList(
-        map['availableSizes'],
-        (size) => ProductSize.fromString(size),
-      ),
-      // Conditionally parse rent/swap fields based on determined productType
-      rentType: SafeParsing.parseEnum(map['rentType'], RentType.values),
-      // depositAmount: SafeParsing.parseDouble(map['depositAmount']),
-      // swapCondition: '',
-    );
-  }
-
-  @override
-  List<Object?> get props => [
-    id,
-    sellerUid,
-    name,
-    description,
-    rating,
-    price,
-    isDeleted,
-    imageUrls,
-    category,
-    reviewsIds,
-    productType,
-    availableSizes,
-    rentType,
-    // depositAmount,
-    // swapCondition,
-  ];
 }

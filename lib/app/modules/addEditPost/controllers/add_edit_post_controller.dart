@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:herdrobe_app/app/data/enums/rent_type.dart';
+import 'package:herdrobe_app/app/data/enums/rent_period.dart';
 
 class AddEditPostController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -25,7 +25,7 @@ class AddEditPostController extends GetxController {
 
   bool hideIdentity = false;
 
-  RentType rentType = RentType.perDay;
+  RentPeriod rentType = RentPeriod.day;
 
   addPost() {
     if (formKey.currentState!.validate()) {

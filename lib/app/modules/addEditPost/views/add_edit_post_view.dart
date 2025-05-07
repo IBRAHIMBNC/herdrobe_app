@@ -6,12 +6,13 @@ import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/data/enums/product_size.dart';
 import 'package:herdrobe_app/app/data/enums/products_category.dart';
-import 'package:herdrobe_app/app/data/enums/rent_type.dart';
+import 'package:herdrobe_app/app/data/enums/rent_period.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/data/extensions/enum.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/utils/auth_validators.dart';
+import 'package:herdrobe_app/app/utils/loading_overlay.dart';
 import 'package:herdrobe_app/app/widgets/%20my_drop_down.dart';
 import 'package:herdrobe_app/app/widgets/address_details_card.dart';
 import 'package:herdrobe_app/app/widgets/bottom_sheets/confirmation_sheet.dart';
@@ -115,12 +116,13 @@ class AddEditPostView extends GetView<AddEditPostController> {
                                   width: 120.w,
                                   value: controller.rentType.capitalizeFirst,
                                   items:
-                                      RentType.values
+                                      RentPeriod.values
                                           .map((type) => type.capitalizeFirst)
                                           .toList(),
                                   onChanged: (p0) {
-                                    controller.rentType = RentType.values
-                                        .byName(p0.toLowerCase());
+                                    controller.rentType = RentPeriod.fromString(
+                                      p0.toLowerCase(),
+                                    );
                                     print(controller.rentType);
                                   },
                                   bgColor: AppColors.cardColor,
@@ -195,11 +197,11 @@ class AddEditPostView extends GetView<AddEditPostController> {
                         title: 'Post Your Ad',
                         message:
                             'Are you sure you want to post this ad? It will be visible to all users.',
-
                         confirmBtnText: 'Confirm',
                         cancelBtnText: 'Go Back',
                         onConfirmTap: () {
                           controller.addPost();
+                          isLoading = false;
                           Get.back();
                         },
                       ),

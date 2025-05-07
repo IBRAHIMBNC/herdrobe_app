@@ -1,6 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
+
 import 'package:herdrobe_app/app/data/models/cart_item.dart';
 import 'package:herdrobe_app/app/utils/safe_parsing.dart';
+
 import '../enums/order_status.dart';
 
 /// Represents an order placed within the application.
@@ -87,4 +90,28 @@ class OrderModel extends Equatable {
     trackingNumber,
     courier,
   ];
+
+  OrderModel copyWith({
+    String? id,
+    String? buyerUid,
+    String? phoneNumber,
+    double? shippingCost,
+    OrderStatus? status,
+    List<CartItemModel>? items,
+    bool? isPickup,
+    String? trackingNumber,
+    String? courier,
+  }) {
+    return OrderModel(
+      id: id ?? this.id,
+      buyerUid: buyerUid ?? this.buyerUid,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      shippingCost: shippingCost ?? this.shippingCost,
+      status: status ?? this.status,
+      items: items ?? this.items,
+      isPickup: isPickup ?? this.isPickup,
+      trackingNumber: trackingNumber ?? this.trackingNumber,
+      courier: courier ?? this.courier,
+    );
+  }
 }

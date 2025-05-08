@@ -6,6 +6,10 @@ import '../modules/account/bindings/account_binding.dart';
 import '../modules/account/views/account_view.dart';
 import '../modules/addEditPost/bindings/add_edit_post_binding.dart';
 import '../modules/addEditPost/views/add_edit_post_view.dart';
+import '../modules/adminDashboard/bindings/admin_dashboard_binding.dart';
+import '../modules/adminDashboard/views/admin_dashboard_view.dart';
+import '../modules/adminNavigation/bindings/admin_navigation_binding.dart';
+import '../modules/adminNavigation/views/admin_navigation_view.dart';
 import '../modules/auth/forgotPassword/bindings/forgot_password_binding.dart';
 import '../modules/auth/forgotPassword/views/forgot_password_view.dart';
 import '../modules/auth/login/bindings/login_binding.dart';
@@ -176,6 +180,16 @@ class AppPages {
       name: _Paths.PRIVACY_POLICY,
       page: () => const PrivacyPolicyView(),
       binding: PrivacyPolicyBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_DASHBOARD,
+      page: () => const AdminDashboardView(),
+      binding: AdminDashboardBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_NAVIGATION,
+      page: () => const AdminNavigationView(),
+      binding: AdminNavigationBinding(),
     ),
   ];
 }

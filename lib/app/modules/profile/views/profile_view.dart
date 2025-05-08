@@ -34,7 +34,7 @@ class ProfileView extends GetView<ProfileController> {
           children: [
             MyListTile(
               padding: kPadding16.all,
-              border: BorderSide(color: AppColors.lightGrey, width: 0.5),
+              border: BorderSide(color: AppColors.black5, width: 1),
               leading: CustomImage.fromSize(
                 MyUtils.getTempLink(),
                 radius: 40.r,
@@ -59,7 +59,7 @@ class ProfileView extends GetView<ProfileController> {
             16.verticalSpace,
             MyContainer(
               padding: kPadding24.all,
-              border: BorderSide(color: AppColors.lightGrey, width: 0.5),
+              border: BorderSide(color: AppColors.black5, width: 1),
               child: Column(
                 spacing: 28.h,
                 children: [
@@ -92,7 +92,7 @@ class ProfileView extends GetView<ProfileController> {
             16.verticalSpace,
             MyContainer(
               padding: kPadding24.all,
-              border: BorderSide(color: AppColors.lightGrey, width: 0.5),
+              border: BorderSide(color: AppColors.black5, width: 1),
               child: Column(
                 spacing: 28.h,
                 children: [

@@ -39,7 +39,7 @@ class TrackOrderWidget extends StatelessWidget {
       radius: 12.r,
       margin: kPadding24.all,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-      border: const BorderSide(width: 1, color: AppColors.lightGrey),
+      border: const BorderSide(color: AppColors.black5, width: 1),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,

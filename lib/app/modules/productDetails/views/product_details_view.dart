@@ -146,7 +146,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
         tag: 'bottomNavigationBar',
         child: MyContainer(
           radius: 0,
-          border: BorderSide(color: AppColors.lightGrey, width: 1),
+          border: BorderSide(color: AppColors.black5, width: 1),
           padding: kPadding24.all,
           child: RoundedButton.filledMedium(
             Row(
@@ -168,7 +168,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
   MyContainer _buildDescriptionCard() {
     return MyContainer(
       padding: kPadding16.all,
-      border: BorderSide(color: AppColors.black.withOpacity(0.1), width: 1),
+      border: BorderSide(color: AppColors.black5, width: 1),
       child: Column(
         spacing: 12.h,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -194,7 +194,7 @@ class ProductDetailsView extends GetView<ProductDetailsController> {
   MyContainer _buildDetailsCard() {
     return MyContainer(
       padding: kPadding16.all,
-      border: BorderSide(color: AppColors.black.withOpacity(0.1), width: 1.w),
+      border: BorderSide(color: AppColors.black5, width: 1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

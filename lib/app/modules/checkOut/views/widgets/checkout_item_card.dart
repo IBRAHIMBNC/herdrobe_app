@@ -20,7 +20,7 @@ class CheckoutItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyContainer(
-      border: BorderSide(width: 1, color: AppColors.black.withOpacity(0.1)),
+      border: BorderSide(color: AppColors.black5, width: 1),
       child: Column(
         children: [
           Padding(

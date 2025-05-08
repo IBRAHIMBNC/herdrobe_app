@@ -63,4 +63,6 @@ class AppIcons {
   static const String recent = '${basePath}recent.svg';
   static const String filter = '${basePath}filter.svg';
   static const String alert = '${basePath}alert.svg';
+
+  static const String arrowUpRight = '${basePath}arrow_up_right.svg';
 }

@@ -4,9 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/strings.dart';
-import 'package:herdrobe_app/app/data/models/product.dart';
-import 'package:herdrobe_app/app/data/services/auth_service.dart';
-import 'package:herdrobe_app/app/data/services/db_service.dart';
 import 'package:herdrobe_app/app/data/services/logger_service.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_text_styles.dart';
@@ -29,8 +26,8 @@ void main() {
 
 void initServices() async {
   logInfo('starting services ...');
-  await Get.put(DbService());
-  await Get.putAsync(AuthService().init());
+  // await Get.put(DbService());
+  // await Get.putAsync(AuthService().init());
   logInfo('All services started...');
 }
 

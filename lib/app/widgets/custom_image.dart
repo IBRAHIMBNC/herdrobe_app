@@ -79,6 +79,23 @@ class CustomImage extends StatelessWidget {
        width = size,
        super(key: key);
 
+  const CustomImage.cirlce(
+    this.imagePath, {
+    Key? key,
+    required double size,
+    this.fit = BoxFit.cover,
+    this.radius = 200,
+    this.backgroundColor,
+    this.errorWidget,
+    this.border,
+    this.useSmoothCorners = true,
+    this.smoothness = 1.0,
+    this.child,
+    this.color,
+  }) : height = size,
+       width = size,
+       super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(

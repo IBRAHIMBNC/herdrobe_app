@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension WidgetExtension on Widget {
-  Widget shadow({
+  Widget boxShadow({
     Color? color,
     Offset? offset,
     double? blurRadius,

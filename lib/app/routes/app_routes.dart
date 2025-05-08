@@ -27,6 +27,8 @@ abstract class Routes {
   static const PICK_LOCATION_IN_MAP = _Paths.PICK_LOCATION_IN_MAP;
   static const F_A_QS = _Paths.F_A_QS;
   static const PRIVACY_POLICY = _Paths.PRIVACY_POLICY;
+  static const ADMIN_DASHBOARD = _Paths.ADMIN_DASHBOARD;
+  static const ADMIN_NAVIGATION = _Paths.ADMIN_NAVIGATION;
 }
 
 abstract class _Paths {
@@ -55,4 +57,6 @@ abstract class _Paths {
   static const PICK_LOCATION_IN_MAP = '/pick-location-in-map';
   static const F_A_QS = '/f-a-qs';
   static const PRIVACY_POLICY = '/privacy-policy';
+  static const ADMIN_DASHBOARD = '/admin-dashboard';
+  static const ADMIN_NAVIGATION = '/admin-navigation';
 }

@@ -9,7 +9,7 @@ class LoginController extends GetxController {
   String password = '';
 
   login() {
-    Get.toNamed(Routes.NAVIGATION);
+    Get.toNamed(Routes.ADMIN_NAVIGATION);
     // if (formKey.currentState!.validate()) {
     //   formKey.currentState!.save();
     //   // Perform login action

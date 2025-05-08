@@ -136,7 +136,7 @@ class CheckOutView extends GetView<CheckOutController> {
         tag: 'bottomNavigationBar',
         child: MyContainer(
           radius: 0,
-          border: BorderSide(color: AppColors.lightGrey, width: 1),
+          border: BorderSide(color: AppColors.black5, width: 1),
           padding: EdgeInsets.symmetric(
             horizontal: kPadding24.w,
             vertical: kPadding24.h,

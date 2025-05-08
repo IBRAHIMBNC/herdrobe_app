@@ -50,9 +50,7 @@ class ProductDetailsCard extends StatelessWidget {
         vertical: kPadding8.h,
       ),
       border:
-          _showBorder
-              ? BorderSide(width: 1, color: AppColors.black.withOpacity(0.1))
-              : null,
+          _showBorder ? BorderSide(width: 1, color: AppColors.black5) : null,
       radius: 15.r,
       child: Stack(
         fit: StackFit.loose,

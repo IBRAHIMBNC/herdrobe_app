@@ -101,10 +101,7 @@ class SearchFilterSheet extends GetView<SearchController> {
             ),
             16.verticalSpace,
             MyContainer(
-              border: BorderSide(
-                color: AppColors.black.withOpacity(0.1),
-                width: 1,
-              ),
+              border: BorderSide(color: AppColors.black5, width: 1),
               child: AddressDetailsCard(),
             ),
             16.verticalSpace,

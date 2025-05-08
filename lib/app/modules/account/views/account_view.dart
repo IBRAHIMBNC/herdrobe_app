@@ -37,7 +37,7 @@ class AccountView extends GetView<AccountController> {
 
             MyContainer(
               radius: 16.r,
-              border: BorderSide(color: AppColors.black.withOpacity(0.05)),
+              border: BorderSide(color: AppColors.black5),
               padding: kPadding16.all,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,7 +60,7 @@ class AccountView extends GetView<AccountController> {
             16.verticalSpace,
             MyContainer(
               padding: kPadding20.all,
-              border: BorderSide(color: AppColors.black.withOpacity(0.05)),
+              border: BorderSide(color: AppColors.black5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -124,7 +124,7 @@ class AccountView extends GetView<AccountController> {
       padding: kPadding20.all,
       color: AppColors.cardColor,
       // shadow: kSTransparentShadow,
-      border: BorderSide(color: AppColors.black.withOpacity(0.05)),
+      border: BorderSide(color: AppColors.black5),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

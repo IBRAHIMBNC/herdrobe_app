@@ -23,7 +23,7 @@ class NavigationView extends GetView<NavigationController> {
       bottomNavigationBar: Obx(
         () => MyContainer(
           radius: 0,
-          border: BorderSide(color: AppColors.lightGrey, width: 0.5),
+          border: BorderSide(color: AppColors.black5, width: 1),
           child: BottomNavigationBar(
             backgroundColor: Colors.transparent,
             elevation: 0,

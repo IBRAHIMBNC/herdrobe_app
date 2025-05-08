@@ -92,7 +92,7 @@ class WelcomeView extends GetView<WelcomeController> {
                   RoundedButton(
                     'Continue',
                     onTap: () {
-                      Get.offAllNamed(Routes.HOME);
+                      Get.offAllNamed(Routes.NAVIGATION);
                     },
                   ),
                 ],

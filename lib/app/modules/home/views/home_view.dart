@@ -79,30 +79,34 @@ class HomeView extends GetView<HomeController> {
                 SizedBox(
                   height: 48.h,
                   child: MyListTile(
-                    onTap: () {
-                      Get.bottomSheet(LoginAlertSheet());
-                    },
+                    onTap: () {},
                     crossAxisAlignment: CrossAxisAlignment.start,
                     padding: kPadding24.hp,
-                    leading: CustomImage(
-                      MyUtils.getTempLink(),
-                      radius: 50.r,
-                      height: 40.h,
-                      width: 40.w,
-                      fit: BoxFit.cover,
+                    horizontalSpacing: 10.w,
+                    leading: CircleAvatar(
+                      radius: 24.r,
+                      backgroundColor: AppColors.white,
+                      child: CustomImage.fromSize(
+                        MyUtils.getTempLink(),
+                        radius: 50.r,
+                        size: 45.sp,
+
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     title: CustomText.boldHeading18(
                       'Hi Morgan!',
                       color: AppColors.white,
                     ),
-                    subtitle: CustomText.paragraph(
+                    verticalSpacing: 4.h,
+                    subtitle: CustomText.small12(
                       'Hope you will be doing great',
                       color: AppColors.white,
                     ),
                     trailing: CircleButton(
                       icon: AppIcons.bell,
                       onTap: () {
-                        Get.toNamed(Routes.NOTIFICATION);
+                        // Get.toNamed(Routes.NOTIFICATION);
                       },
                       backgroundColor: AppColors.white.withOpacity(0.2),
                       iconColor: AppColors.white,
@@ -133,7 +137,7 @@ class HomeView extends GetView<HomeController> {
                               iconColor: AppColors.white,
                             ),
                           ),
-                        ).shadow(),
+                        ).boxShadow(),
                   ),
                 ),
               ],

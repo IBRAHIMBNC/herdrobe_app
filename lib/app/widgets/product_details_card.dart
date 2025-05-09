@@ -15,6 +15,7 @@ import 'package:herdrobe_app/app/widgets/custom_image.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
 import 'package:herdrobe_app/app/widgets/my_list_tile.dart';
+import 'package:herdrobe_app/app/widgets/support_card.dart';
 
 class ProductDetailsCard extends StatelessWidget {
   const ProductDetailsCard({
@@ -61,21 +62,10 @@ class ProductDetailsCard extends StatelessWidget {
               MyUtils.getTempLink(),
               width: 100.w,
               radius: 10.r,
-              height: 85.h,
+              height: 90.h,
             ),
-            title: MyContainer(
-              padding: EdgeInsets.symmetric(
-                horizontal: kPadding8.w,
-                vertical: kPadding4.h,
-              ),
-              color: AppColors.cardColor,
-              child: CustomText.smaller('Rent', color: AppColors.textColor1),
-            ),
-            // spacing: kPadding12.w,
-
-            // leading: CircleAvatar(
-            //     backgroundImage:
-            //         MyUtils.buildImageProvider(seller.imageUrl)),
+            title: StatusCard(status: 'Rent', color: AppColors.darkBlue),
+            verticalSpacing: 4.h,
             subtitle: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,

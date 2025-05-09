@@ -29,6 +29,7 @@ abstract class Routes {
   static const PRIVACY_POLICY = _Paths.PRIVACY_POLICY;
   static const ADMIN_DASHBOARD = _Paths.ADMIN_DASHBOARD;
   static const ADMIN_NAVIGATION = _Paths.ADMIN_NAVIGATION;
+  static const USER_DETAILS = _Paths.USER_DETAILS;
 }
 
 abstract class _Paths {
@@ -59,4 +60,5 @@ abstract class _Paths {
   static const PRIVACY_POLICY = '/privacy-policy';
   static const ADMIN_DASHBOARD = '/admin-dashboard';
   static const ADMIN_NAVIGATION = '/admin-navigation';
+  static const USER_DETAILS = '/user-details';
 }

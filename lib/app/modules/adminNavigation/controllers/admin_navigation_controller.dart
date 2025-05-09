@@ -13,7 +13,7 @@ class AdminNavigationController extends GetxController {
 
   final List<Widget> sections = [
     GetRouterOutlet(initialRoute: Routes.ADMIN_DASHBOARD),
-    Container(),
+    GetRouterOutlet(initialRoute: Routes.ACCOUNT),
     Container(),
     Container(),
   ];

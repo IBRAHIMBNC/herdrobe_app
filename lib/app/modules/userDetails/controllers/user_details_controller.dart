@@ -1,10 +1,7 @@
 import 'package:get/get.dart';
-import 'package:herdrobe_app/app/data/services/auth_service.dart';
 
-class AccountController extends GetxController {
-  final authService = Get.find<AuthService>();
-
-  bool get isAdmin => authService.isAdmin;
+class UserDetailsController extends GetxController {
+  //TODO: Implement UserDetailsController
 
   final count = 0.obs;
   @override

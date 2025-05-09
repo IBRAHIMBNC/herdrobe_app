@@ -7,169 +7,172 @@
 // import 'package:herdrobe_app/app/data/services/db_service.dart';
 // import 'package:herdrobe_app/app/data/services/logger_service.dart';
 
-// class AuthService extends GetxService {
-//   AppUser? currentUser;
-//   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-//   final _databaseService = Get.find<DbService>();
+import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 
-//   User? get firebaseUser => _firebaseAuth.currentUser;
-//   bool get isLoggedIn => firebaseUser != null;
+class AuthService extends GetxService {
+  final bool isAdmin = false;
+  //   AppUser? currentUser;
+  //   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  //   final _databaseService = Get.find<DbService>();
 
-//   init() async {
-//     if (firebaseUser != null) {
-//       try {
-//         currentUser = await _databaseService.fetchUserData(firebaseUser!);
-//       } catch (e) {
-//         logError('Error fetching user data: $e');
-//       }
-//     }
-//   }
+  //   User? get firebaseUser => _firebaseAuth.currentUser;
+  //   bool get isLoggedIn => firebaseUser != null;
 
-//   @override
-//   void onInit() {
-//     init();
-//     super.onInit();
-//   }
+  init() async {
+    // if (firebaseUser != null) {
+    //   try {
+    //     currentUser = await _databaseService.fetchUserData(firebaseUser!);
+    //   } catch (e) {
+    //     logError('Error fetching user data: $e');
+    //   }
+    // }
+  }
 
-//   Future<void> signOut() async {
-//     // _databaseService.updateFCMToken(currentUser!.uid, null);
-//     currentUser = null;
-//     return _firebaseAuth.signOut();
-//   }
+  //   @override
+  //   void onInit() {
+  //     init();
+  //     super.onInit();
+  //   }
 
-//   Future<bool> createUserWithEmailAndPassword({
-//     required AppUser appUser,
-//     required File? imageFile,
-//     required String password,
-//     bool sendVerificationMail = false,
-//   }) async {
-//     User? user;
-//     try {
-//       String? imageUrl;
-//       if (imageFile != null) {
-//         imageUrl = await _databaseService.uploadProfileImage(file: imageFile);
-//       }
+  //   Future<void> signOut() async {
+  //     // _databaseService.updateFCMToken(currentUser!.uid, null);
+  //     currentUser = null;
+  //     return _firebaseAuth.signOut();
+  //   }
 
-//       UserCredential userCredential = await _firebaseAuth
-//           .createUserWithEmailAndPassword(
-//             email: appUser.email,
-//             password: password,
-//           );
+  //   Future<bool> createUserWithEmailAndPassword({
+  //     required AppUser appUser,
+  //     required File? imageFile,
+  //     required String password,
+  //     bool sendVerificationMail = false,
+  //   }) async {
+  //     User? user;
+  //     try {
+  //       String? imageUrl;
+  //       if (imageFile != null) {
+  //         imageUrl = await _databaseService.uploadProfileImage(file: imageFile);
+  //       }
 
-//       user = userCredential.user;
-//       appUser = appUser.copyWith(uid: user!.uid, photoUrl: imageUrl);
-//       _databaseService.addUser(appUser);
-//       //TODO: add user to firestore
-//       // await user.updateDisplayName(ksUserType);
-//       // await user.reload();
-//       user = _firebaseAuth.currentUser;
-//       if (sendVerificationMail) {
-//         await user?.sendEmailVerification();
-//       }
-//       return true;
-//     } on FirebaseAuthException catch (e) {
-//       final exception = FirebaseAuthErrorCode.fromCode(e.code);
-//       logError(exception?.msg ?? e.toString());
-//     } catch (e) {
-//       logError('$e');
-//       return false;
-//     }
-//     return false;
-//   }
+  //       UserCredential userCredential = await _firebaseAuth
+  //           .createUserWithEmailAndPassword(
+  //             email: appUser.email,
+  //             password: password,
+  //           );
 
-//   Future<bool> signInWithEmailAndPassword({
-//     required String email,
-//     required String password,
-//     bool checkIfEmailIsVerified = false,
-//   }) async {
-//     User? user;
-//     try {
-//       UserCredential userCredential = await _firebaseAuth
-//           .signInWithEmailAndPassword(email: email, password: password);
-//       user = userCredential.user;
+  //       user = userCredential.user;
+  //       appUser = appUser.copyWith(uid: user!.uid, photoUrl: imageUrl);
+  //       _databaseService.addUser(appUser);
+  //       //TODO: add user to firestore
+  //       // await user.updateDisplayName(ksUserType);
+  //       // await user.reload();
+  //       user = _firebaseAuth.currentUser;
+  //       if (sendVerificationMail) {
+  //         await user?.sendEmailVerification();
+  //       }
+  //       return true;
+  //     } on FirebaseAuthException catch (e) {
+  //       final exception = FirebaseAuthErrorCode.fromCode(e.code);
+  //       logError(exception?.msg ?? e.toString());
+  //     } catch (e) {
+  //       logError('$e');
+  //       return false;
+  //     }
+  //     return false;
+  //   }
 
-//       logInfo(" User SignIn Successful");
-//       currentUser = await _databaseService.fetchUserData(user!);
-//       // updateFcmToken();
+  //   Future<bool> signInWithEmailAndPassword({
+  //     required String email,
+  //     required String password,
+  //     bool checkIfEmailIsVerified = false,
+  //   }) async {
+  //     User? user;
+  //     try {
+  //       UserCredential userCredential = await _firebaseAuth
+  //           .signInWithEmailAndPassword(email: email, password: password);
+  //       user = userCredential.user;
 
-//       return true;
-//     } on FirebaseAuthException catch (e) {
-//       final exception = FirebaseAuthErrorCode.fromCode(e.code);
-//       logError(exception?.msg ?? e.toString());
-//     } catch (e) {
-//       logError('$e');
-//       return false;
-//     }
-//     return false;
-//   }
+  //       logInfo(" User SignIn Successful");
+  //       currentUser = await _databaseService.fetchUserData(user!);
+  //       // updateFcmToken();
 
-//   ///Sends a verification email to the current user
-//   Future<void> sendEmailVerification() async {
-//     User? user = _firebaseAuth.currentUser;
-//     user?.sendEmailVerification().catchError((e) {
-//       final exception = FirebaseAuthErrorCode.fromCode(e.code);
-//       logError(exception?.msg ?? e.toString());
-//     });
-//   }
+  //       return true;
+  //     } on FirebaseAuthException catch (e) {
+  //       final exception = FirebaseAuthErrorCode.fromCode(e.code);
+  //       logError(exception?.msg ?? e.toString());
+  //     } catch (e) {
+  //       logError('$e');
+  //       return false;
+  //     }
+  //     return false;
+  //   }
 
-//   /// Checks if the email of current user is verified
-//   bool get isEmailVerified {
-//     User? user = _firebaseAuth.currentUser;
-//     return user?.emailVerified ?? false;
-//   }
+  //   ///Sends a verification email to the current user
+  //   Future<void> sendEmailVerification() async {
+  //     User? user = _firebaseAuth.currentUser;
+  //     user?.sendEmailVerification().catchError((e) {
+  //       final exception = FirebaseAuthErrorCode.fromCode(e.code);
+  //       logError(exception?.msg ?? e.toString());
+  //     });
+  //   }
 
-//   Future<bool> resetPassword(String email) async {
-//     try {
-//       await _firebaseAuth.sendPasswordResetEmail(email: email);
-//       return true;
-//     } on FirebaseAuthException catch (e) {
-//       final exception = FirebaseAuthErrorCode.fromCode(e.code);
-//       logError(exception?.msg ?? e.toString());
-//       return false;
-//     }
-//   }
+  //   /// Checks if the email of current user is verified
+  //   bool get isEmailVerified {
+  //     User? user = _firebaseAuth.currentUser;
+  //     return user?.emailVerified ?? false;
+  //   }
 
-//   Future<bool> deleteAccount(String password) async {
-//     var currentUser = _firebaseAuth.currentUser;
-//     if (currentUser != null) {
-//       final credential = EmailAuthProvider.credential(
-//         email: currentUser.email!,
-//         password: password.trim(),
-//       );
-//       try {
-//         await currentUser.reauthenticateWithCredential(credential);
-//       } catch (err) {
-//         logError('Reauthentication failed: $err');
-//         return false;
-//       }
-//       _databaseService.deleteUser(currentUser.uid);
-//       currentUser.delete();
-//       return true;
-//     }
-//     return false;
-//   }
+  //   Future<bool> resetPassword(String email) async {
+  //     try {
+  //       await _firebaseAuth.sendPasswordResetEmail(email: email);
+  //       return true;
+  //     } on FirebaseAuthException catch (e) {
+  //       final exception = FirebaseAuthErrorCode.fromCode(e.code);
+  //       logError(exception?.msg ?? e.toString());
+  //       return false;
+  //     }
+  //   }
 
-//   Future<bool> changePassword(
-//     String currentPassword,
-//     String newPassword,
-//   ) async {
-//     try {
-//       final credential = EmailAuthProvider.credential(
-//         email: currentUser!.email,
-//         password: currentPassword,
-//       );
-//       await firebaseUser!.reauthenticateWithCredential(credential).catchError((
-//         err,
-//       ) {
-//         throw err;
-//       });
-//       await firebaseUser!.updatePassword(newPassword);
-//       return true;
-//     } on FirebaseAuthException catch (error) {
-//       final exception = FirebaseAuthErrorCode.fromCode(error.code);
-//       logError(exception?.msg ?? error.toString());
-//     }
+  //   Future<bool> deleteAccount(String password) async {
+  //     var currentUser = _firebaseAuth.currentUser;
+  //     if (currentUser != null) {
+  //       final credential = EmailAuthProvider.credential(
+  //         email: currentUser.email!,
+  //         password: password.trim(),
+  //       );
+  //       try {
+  //         await currentUser.reauthenticateWithCredential(credential);
+  //       } catch (err) {
+  //         logError('Reauthentication failed: $err');
+  //         return false;
+  //       }
+  //       _databaseService.deleteUser(currentUser.uid);
+  //       currentUser.delete();
+  //       return true;
+  //     }
+  //     return false;
+  //   }
+  //
+  //   Future<bool> changePassword(
+  //     String currentPassword,
+  //     String newPassword,
+  //   ) async {
+  //     try {
+  //       final credential = EmailAuthProvider.credential(
+  //         email: currentUser!.email,
+  //         password: currentPassword,
+  //       );
+  //       await firebaseUser!.reauthenticateWithCredential(credential).catchError((
+  //         err,
+  //       ) {
+  //         throw err;
+  //       });
+  //       await firebaseUser!.updatePassword(newPassword);
+  //       return true;
+  //     } on FirebaseAuthException catch (error) {
+  //       final exception = FirebaseAuthErrorCode.fromCode(error.code);
+  //       logError(exception?.msg ?? error.toString());
+  //     }
 
-//     return false;
-//   }
-// }
+  //     return false;
+  //   }
+}

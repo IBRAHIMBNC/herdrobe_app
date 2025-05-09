@@ -14,6 +14,7 @@ class OrdersView extends GetView<OrdersController> {
   const OrdersView({super.key});
   @override
   Widget build(BuildContext context) {
+    print(controller.count);
     return DefaultTabController(
       length: 3,
       child: Scaffold(

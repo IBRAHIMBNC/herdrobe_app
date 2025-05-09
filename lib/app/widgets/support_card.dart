@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/data/extensions/widget.dart';
@@ -13,8 +14,8 @@ import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
 import 'package:herdrobe_app/app/widgets/my_list_tile.dart';
 
-class UserDetailsCard extends StatelessWidget {
-  const UserDetailsCard({super.key});
+class SupportCard extends StatelessWidget {
+  const SupportCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,48 +38,24 @@ class UserDetailsCard extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            title: Row(
-              children: [
-                CustomImage(
-                  AppIcons.starFilled,
-                  height: 14.h,
-                  width: 14.w,
-                  fit: BoxFit.cover,
-                ),
-                4.horizontalSpace,
-                CustomText.smaller('4.9'),
-                4.horizontalSpace,
-                CustomText.smaller('(10)', color: AppColors.textColor2),
-              ],
-            ),
+            title: CustomText.smallBold12('Savannah Nguyed'),
             verticalSpacing: 4.h,
             subtitle: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 4.h,
+              spacing: 8.h,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 5,
-                      child: CustomText.smallBold12('Savannah Nguyed'),
-                    ),
-                    _buildVerticalDivider(),
-                    CustomText.smaller('Buyer', color: AppColors.darkBlue),
-                    Spacer(),
-                  ],
-                ),
-                CustomText.smaller('4517 Washington Ave. Manchester'),
+                CustomText.smaller('23 july, 2025 1:00 pm'),
+                StatusCard(status: 'Pending', color: AppColors.errorColor),
               ],
             ),
             trailing: Row(
-              spacing: 4.w,
+              spacing: 6.w,
               children: [
-                CustomText.smaller('View Detail', color: AppColors.blue),
+                CustomText.small12('View Profile', color: AppColors.blue),
                 CustomImage.fromSize(
                   AppIcons.arrowUpRight,
-                  size: 8.sp,
+                  size: 10.sp,
                   color: AppColors.blue,
                 ),
               ],
@@ -92,23 +69,11 @@ class UserDetailsCard extends StatelessWidget {
             color: AppColors.cardColor,
             radius: 50.r,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CustomImage.fromSize(
-                  AppIcons.email,
-                  size: 16.sp,
-                  color: Colors.black,
-                ),
-                8.horizontalSpace,
-                CustomText.smaller('SavaNguyen@gmail.com'),
-                _buildVerticalDivider(),
-                CustomImage.fromSize(
-                  AppIcons.phone,
-                  size: 16.sp,
-                  color: Colors.black,
-                ),
-                8.horizontalSpace,
-                CustomText.smaller('0345 65 43 234'),
+                CustomText.small12('Subject:'),
+                12.horizontalSpace,
+                Expanded(child: CustomText.small12('Cart System not working')),
               ],
             ),
           ),
@@ -117,11 +82,23 @@ class UserDetailsCard extends StatelessWidget {
       ),
     ).boxShadow();
   }
+}
 
-  SizedBox _buildVerticalDivider() {
-    return SizedBox(
-      height: 12.h,
-      child: VerticalDivider(color: AppColors.lightGrey, thickness: 1.w),
+class StatusCard extends StatelessWidget {
+  const StatusCard({super.key, required this.status, required this.color});
+  final String status;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return MyContainer(
+      radius: 4.r,
+      padding: EdgeInsets.symmetric(
+        vertical: kPadding4.h,
+        horizontal: kPadding8.w,
+      ),
+      child: CustomText.smaller(status, color: color),
+      color: color.withOpacity(0.1),
     );
   }
 }

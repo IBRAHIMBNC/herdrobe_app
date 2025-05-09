@@ -14,6 +14,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double? height;
   final double? titleSpacing;
   final PreferredSizeWidget? bottom; // Added bottom property
+  final Widget? leading;
 
   const MyAppBar({
     super.key,
@@ -25,7 +26,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.onBackPressed,
     this.height,
     this.titleSpacing,
-    this.bottom, // Initialize bottom
+    this.bottom,
+    this.leading, // Initialize bottom
   });
 
   @override
@@ -41,21 +43,24 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           12.horizontalSpace,
-          showBackButton
-              ? Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: preferredSize.height / 7,
-                ),
-                child: CircleButton(
-                  icon: Icon(
-                    Icons.arrow_back_ios_rounded,
-                    size: 18,
-                    color: iconColor,
+          if (leading != null)
+            leading!
+          else
+            showBackButton
+                ? Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: preferredSize.height / 7,
                   ),
-                  onTap: onBackPressed ?? () => Navigator.of(context).pop(),
-                ),
-              )
-              : SizedBox.shrink(),
+                  child: CircleButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios_rounded,
+                      size: 18,
+                      color: iconColor,
+                    ),
+                    onTap: onBackPressed ?? () => Navigator.of(context).pop(),
+                  ),
+                )
+                : SizedBox.shrink(),
           (titleSpacing ?? 16.w).horizontalSpace,
           Expanded(
             child:

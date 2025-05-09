@@ -2,36 +2,49 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:herdrobe_app/app/constants/paddings.dart';
+import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/modules/sellerDetails/controllers/seller_details_controller.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/utils/my_utils.dart';
 import 'package:herdrobe_app/app/widgets/circle_button.dart';
 import 'package:herdrobe_app/app/widgets/custom_image.dart';
+import 'package:herdrobe_app/app/widgets/custom_tabbar.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
+import 'package:herdrobe_app/app/widgets/my_rounded_button.dart';
 
 class MySliverAppBar extends GetView<SellerDetailsController> {
-  const MySliverAppBar({super.key});
+  const MySliverAppBar({super.key, this.additionalExpandedHeight});
+  final double? additionalExpandedHeight;
 
   @override
   Widget build(BuildContext context) {
+    final bool isAdmin = Get.find<SellerDetailsController>().isAdmin;
+    final expandedHeight =
+        !isAdmin ? 350.h : (400.h + 60.h + (additionalExpandedHeight ?? 0));
+    final collapsedHeight =
+        isAdmin ? kToolbarHeight + 20.h : kToolbarHeight + 10.h;
+
     return SliverAppBar(
-      expandedHeight: 330.h, // Height when fully expanded
+      expandedHeight: expandedHeight, // Height when fully expanded
       floating: true, // App bar reappears as soon as you scroll down
       pinned: true, // App bar stays visible at the top when collapsed
       snap: false, // Set to true if you want the app bar to snap into view
       elevation: 0,
-
       stretch: true,
+      collapsedHeight: collapsedHeight,
+      bottom: _buildTabBar(),
       flexibleSpace: FlexibleSpaceBar(
         collapseMode: CollapseMode.pin,
+        stretchModes: const [StretchMode.fadeTitle],
         background: Column(
           children: [
             CustomImage(
               MyUtils.getTempLink(),
               radius: 0,
-              height: 200.h,
+              height: 220.h,
               width: double.infinity,
               fit: BoxFit.cover,
             ),
@@ -54,7 +67,7 @@ class MySliverAppBar extends GetView<SellerDetailsController> {
                     color: AppColors.textColor2,
                   ),
                   MyContainer(
-                    padding: EdgeInsets.symmetric(vertical: 24.h),
+                    padding: EdgeInsets.symmetric(vertical: kPadding16.h),
                     radius: 16.r,
                     child: Row(
                       children: [
@@ -82,6 +95,14 @@ class MySliverAppBar extends GetView<SellerDetailsController> {
                       ],
                     ),
                   ),
+                  if (isAdmin)
+                    Padding(
+                      padding: kPadding24.hp,
+                      child: RoundedButton.outlinedMedium(
+                        'Suspend',
+                        onTap: () {},
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -99,7 +120,7 @@ class MySliverAppBar extends GetView<SellerDetailsController> {
       ),
       automaticallyImplyLeading: false,
       scrolledUnderElevation: 6,
-      shadowColor: Colors.black.withOpacity(0.2),
+      shadowColor: AppColors.black20,
     );
   }
 
@@ -137,6 +158,28 @@ class MySliverAppBar extends GetView<SellerDetailsController> {
         4.verticalSpace,
         CustomText.small12(title),
       ],
+    );
+  }
+
+  _buildTabBar() {
+    final bool isAdmin = Get.find<SellerDetailsController>().isAdmin;
+    if (!isAdmin) return null;
+
+    return PreferredSize(
+      preferredSize: Size.fromHeight(55.h),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: kPadding24.w,
+          vertical: kPadding12.h,
+        ),
+        child: CustomTabbar(
+          tabController: controller.mainTabController,
+          onTabChanged: (index) {
+            controller.currentIndex.value = index;
+          },
+          tabs: [Tab(text: 'Personal Details'), Tab(text: 'Listings')],
+        ),
+      ),
     );
   }
 }

@@ -22,9 +22,10 @@ class OrderDetailsTab extends StatelessWidget {
     final order = OrderModel.empty;
     return SingleChildScrollView(
       child: Padding(
-        padding: kPadding24.all,
+        padding: kPadding24.hp,
         child: Column(
           children: [
+            16.verticalSpace,
             CheckoutItemCard(
               titleIcon: AppIcons.map,
               title: 'Delivery Address',

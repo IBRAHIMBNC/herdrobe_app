@@ -46,6 +46,8 @@ import '../modules/searchProduct/bindings/search_product_binding.dart';
 import '../modules/searchProduct/views/search_product_view.dart';
 import '../modules/sellerDetails/bindings/seller_details_binding.dart';
 import '../modules/sellerDetails/views/seller_details_view.dart';
+import '../modules/userDetails/bindings/user_details_binding.dart';
+import '../modules/userDetails/views/user_details_view.dart';
 import '../modules/welcome/bindings/welcome_binding.dart';
 import '../modules/welcome/views/welcome_view.dart';
 import '../modules/whishlist/bindings/whishlist_binding.dart';
@@ -190,6 +192,11 @@ class AppPages {
       name: _Paths.ADMIN_NAVIGATION,
       page: () => const AdminNavigationView(),
       binding: AdminNavigationBinding(),
+    ),
+    GetPage(
+      name: _Paths.USER_DETAILS,
+      page: () => const UserDetailsView(),
+      binding: UserDetailsBinding(),
     ),
   ];
 }

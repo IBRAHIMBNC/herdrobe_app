@@ -6,10 +6,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
+import 'package:herdrobe_app/app/modules/adminNavigation/views/admin_navigation_view.dart';
 import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/utils/my_utils.dart';
+import 'package:herdrobe_app/app/widgets/circle_button.dart';
 import 'package:herdrobe_app/app/widgets/custom_image.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/my_appbar.dart';
@@ -24,7 +26,16 @@ class AccountView extends GetView<AccountController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(title: 'Account'),
+      appBar: MyAppBar(
+        leading: CircleButton(
+          icon: Icon(Icons.menu, color: AppColors.black),
+
+          onTap: () {
+            adminNavigationScafoldKey.currentState?.openDrawer();
+          },
+        ),
+        title: 'Account',
+      ),
       body: Container(
         width: double.infinity,
         padding: kPadding24.hp,
@@ -73,14 +84,16 @@ class AccountView extends GetView<AccountController> {
                       Get.toNamed(Routes.CHANGE_PASSWORD);
                     },
                   ),
-                  24.verticalSpace,
-                  _buildSettingButton(
-                    path: AppIcons.document,
-                    title: 'Delete Account',
-                    onTap: () {
-                      Get.toNamed(Routes.DELETE_ACCOUNT);
-                    },
-                  ),
+                  if (controller.isAdmin) ...[
+                    24.verticalSpace,
+                    _buildSettingButton(
+                      path: AppIcons.document,
+                      title: 'Delete Account',
+                      onTap: () {
+                        Get.toNamed(Routes.DELETE_ACCOUNT);
+                      },
+                    ),
+                  ],
                   12.verticalSpace,
                 ],
               ),

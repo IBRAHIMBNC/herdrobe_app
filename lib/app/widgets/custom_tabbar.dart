@@ -12,11 +12,13 @@ class CustomTabbar extends StatelessWidget {
     required this.tabs,
     this.tabController,
     this.onTabChanged,
+    this.isDisabled = false,
   });
 
   final List<Tab> tabs;
   final TabController? tabController;
   final Function(int)? onTabChanged;
+  final bool isDisabled;
 
   @override
   Widget build(BuildContext context) {
@@ -27,23 +29,26 @@ class CustomTabbar extends StatelessWidget {
         shape: SmoothRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
       ),
       padding: kPadding8.all,
-      child: TabBar(
-        labelColor: AppColors.black,
-        labelStyle: AppTextStyles.paragraph14,
-        unselectedLabelColor: AppColors.textColor2,
-        dividerColor: Colors.transparent,
-        padding: EdgeInsets.zero,
-        indicatorSize: TabBarIndicatorSize.tab,
-        indicator: ShapeDecoration(
-          shape: SmoothRectangleBorder(
-            borderRadius: BorderRadius.circular(12.r),
+      child: IgnorePointer(
+        ignoring: isDisabled,
+        child: TabBar(
+          labelColor: AppColors.black,
+          labelStyle: AppTextStyles.paragraph14,
+          unselectedLabelColor: AppColors.textColor2,
+          dividerColor: Colors.transparent,
+          padding: EdgeInsets.zero,
+          indicatorSize: TabBarIndicatorSize.tab,
+          indicator: ShapeDecoration(
+            shape: SmoothRectangleBorder(
+              borderRadius: BorderRadius.circular(12.r),
+            ),
+            color: AppColors.white,
           ),
-          color: AppColors.white,
+          indicatorColor: Colors.white,
+          tabs: tabs,
+          controller: tabController,
+          onTap: onTabChanged,
         ),
-        indicatorColor: Colors.white,
-        tabs: tabs,
-        controller: tabController,
-        onTap: onTabChanged,
       ),
     );
   }

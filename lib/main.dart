@@ -4,14 +4,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/strings.dart';
+import 'package:herdrobe_app/app/data/services/admin_sercice.dart';
+import 'package:herdrobe_app/app/data/services/app_state_service.dart';
+import 'package:herdrobe_app/app/data/services/auth_service.dart';
 import 'package:herdrobe_app/app/data/services/logger_service.dart';
+import 'package:herdrobe_app/app/data/services/product_service.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_text_styles.dart';
 import 'package:herdrobe_app/app/utils/rounded_button_styles.dart';
 
 import 'app/routes/app_pages.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // debugRepaintRainbowEnabled = true;
   SystemChrome.setSystemUIOverlayStyle(
@@ -21,13 +25,17 @@ void main() {
       statusBarBrightness: Brightness.light, // For iOS (dark icons)
     ),
   );
+  await initServices();
   runApp(MyApp());
 }
 
-void initServices() async {
+Future<void> initServices() async {
   logInfo('starting services ...');
   // await Get.put(DbService());
-  // await Get.putAsync(AuthService().init());
+  await Get.put(AuthService());
+  await Get.put(AppStateService());
+  await Get.put(ProductService());
+  await Get.put(AdminSercice());
   logInfo('All services started...');
 }
 

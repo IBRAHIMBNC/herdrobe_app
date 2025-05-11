@@ -50,19 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDs_C1IUtwcg5vslLI6ffTvLq7KE7_uCuA',
-    appId: '1:260732379889:android:6408d8ef7d9c0e4188ff50',
-    messagingSenderId: '260732379889',
-    projectId: 'herdrobe-app',
-    storageBucket: 'herdrobe-app.firebasestorage.app',
+    apiKey: 'AIzaSyBjFkykNVw0Deg9qMGD_wnuMvUOGhtA4RM',
+    appId: '1:838455717399:android:32274b409ffe82d6cf7652',
+    messagingSenderId: '838455717399',
+    projectId: 'herdrobe-app-dev',
+    storageBucket: 'herdrobe-app-dev.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCeuxaMhP_iXvmekdyKtA5PSdS_XAC3zsY',
-    appId: '1:260732379889:ios:6a6e336901240a5d88ff50',
-    messagingSenderId: '260732379889',
-    projectId: 'herdrobe-app',
-    storageBucket: 'herdrobe-app.firebasestorage.app',
+    apiKey: 'AIzaSyCGRNomoeRTamr2TYWOteRbUls8-uctaE4',
+    appId: '1:838455717399:ios:17db85d090ea2defcf7652',
+    messagingSenderId: '838455717399',
+    projectId: 'herdrobe-app-dev',
+    storageBucket: 'herdrobe-app-dev.firebasestorage.app',
     iosBundleId: 'com.shop.hardrobe.app',
   );
+
 }

@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyCeuxaMhP_iXvmekdyKtA5PSdS_XAC3zsY</string>
+	<string>AIzaSyCGRNomoeRTamr2TYWOteRbUls8-uctaE4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>260732379889</string>
+	<string>838455717399</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.shop.hardrobe.app</string>
 	<key>PROJECT_ID</key>
-	<string>herdrobe-app</string>
+	<string>herdrobe-app-dev</string>
 	<key>STORAGE_BUCKET</key>
-	<string>herdrobe-app.firebasestorage.app</string>
+	<string>herdrobe-app-dev.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:260732379889:ios:6a6e336901240a5d88ff50</string>
+	<string>1:838455717399:ios:17db85d090ea2defcf7652</string>
 </dict>
 </plist>

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "260732379889",
-    "project_id": "herdrobe-app",
-    "storage_bucket": "herdrobe-app.firebasestorage.app"
+    "project_number": "838455717399",
+    "project_id": "herdrobe-app-dev",
+    "storage_bucket": "herdrobe-app-dev.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:260732379889:android:6408d8ef7d9c0e4188ff50",
+        "mobilesdk_app_id": "1:838455717399:android:32274b409ffe82d6cf7652",
         "android_client_info": {
           "package_name": "com.shop.hardrobe.app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDs_C1IUtwcg5vslLI6ffTvLq7KE7_uCuA"
+          "current_key": "AIzaSyBjFkykNVw0Deg9qMGD_wnuMvUOGhtA4RM"
         }
       ],
       "services": {

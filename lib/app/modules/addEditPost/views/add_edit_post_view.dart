@@ -201,7 +201,7 @@ class AddEditPostView extends GetView<AddEditPostController> {
                         cancelBtnText: 'Go Back',
                         onConfirmTap: () {
                           controller.addPost();
-                          isLoading = false;
+                          // isAppLoadin = false;
                           Get.back();
                         },
                       ),

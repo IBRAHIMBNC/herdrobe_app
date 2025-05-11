@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/widgets/circle_button.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
@@ -46,7 +47,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           if (leading != null)
             leading!
           else
-            showBackButton
+            showBackButton && Navigator.canPop(context)
                 ? Padding(
                   padding: EdgeInsets.symmetric(
                     vertical: preferredSize.height / 7,

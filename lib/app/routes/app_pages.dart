@@ -52,6 +52,8 @@ import '../modules/welcome/bindings/welcome_binding.dart';
 import '../modules/welcome/views/welcome_view.dart';
 import '../modules/whishlist/bindings/whishlist_binding.dart';
 import '../modules/whishlist/views/whishlist_view.dart';
+import '../modules/wrapper/bindings/wrapper_binding.dart';
+import '../modules/wrapper/views/wrapper_view.dart';
 import '../modules/yourPost/bindings/your_post_binding.dart';
 import '../modules/yourPost/views/your_post_view.dart';
 
@@ -60,7 +62,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.WRAPPER;
 
   static final routes = [
     GetPage(
@@ -197,6 +199,11 @@ class AppPages {
       name: _Paths.USER_DETAILS,
       page: () => const UserDetailsView(),
       binding: UserDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.WRAPPER,
+      page: () => const WrapperView(),
+      binding: WrapperBinding(),
     ),
   ];
 }

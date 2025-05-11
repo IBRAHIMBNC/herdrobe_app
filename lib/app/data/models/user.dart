@@ -40,6 +40,40 @@ class AppUser extends Equatable {
     this.isSuspended,
   });
 
+  factory AppUser.create({
+    String? uid,
+    required String name,
+    required String email,
+    String? phone,
+    String? photoUrl,
+    String? fcmToken,
+    String? cnicImageUrl,
+    String? cnicNumber,
+    bool isVerifiedPhone = false,
+    bool isVerifiedEmail = false,
+    double rating = 0.0,
+    int productLength = 0,
+    UserType userType = UserType.none,
+  }) {
+    return AppUser(
+      uid: uid ?? '',
+      fullName: name,
+      email: email,
+      phone: phone,
+      imageUrl: photoUrl,
+      fcmToken: fcmToken,
+      cnicImageUrl: cnicImageUrl,
+      cnicNumber: cnicNumber,
+      isVerifiedPhone: isVerifiedPhone,
+      isVerifiedEmail: isVerifiedEmail,
+      rating: rating,
+      productLength: productLength,
+      userType: userType,
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now(),
+    );
+  }
+
   AppUser copyWith({
     String? uid,
     String? name,

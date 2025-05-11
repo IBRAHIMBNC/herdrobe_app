@@ -33,10 +33,14 @@ class SafeParsing {
     }
   }
 
-  static bool parseBool(String? value) {
+  static bool parseBool(dynamic value) {
+    if (value is bool) {
+      return value;
+    }
     if (value == null || value.isEmpty) {
       return false;
     }
+
     try {
       return value.toLowerCase() == 'true';
     } catch (e) {
@@ -44,15 +48,18 @@ class SafeParsing {
     }
   }
 
-  static DateTime? parseDate(String? value) {
-    if (value == null || value.isEmpty) {
+  static DateTime? parseDate(dynamic value) {
+    if (value == null || (value is String && value.isEmpty)) {
       return null;
     }
     try {
-      return DateTime.parse(value);
+      if (value is String) {
+        return DateTime.tryParse(value);
+      }
     } catch (e) {
       return null;
     }
+    return null;
   }
 
   static List<T> parseList<T>(

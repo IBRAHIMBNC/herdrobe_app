@@ -59,7 +59,7 @@ _hideLoadingOverlay() {
   LoadingOverlay().hide();
 }
 
-set isLoading(bool value) {
+set isAppLoading(bool value) {
   if (value) {
     _showLoadingOverlay();
   } else {

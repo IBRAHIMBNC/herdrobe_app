@@ -84,7 +84,7 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
       bottomNavigationBar: Padding(
         padding: kPadding24.all,
         child: RoundedButton(
-          'SignUp',
+          'Continue',
           onTap: () {
             Get.toNamed(Routes.WELCOME);
           },

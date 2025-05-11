@@ -1,6 +1,6 @@
 // Authentication errors
-enum FirebaseAuthErrorCode {
-  emailAlreadyExists('auth/email-already-exists'),
+enum FirebaseAuthError {
+  emailAlreadyExists('auth/email-already-in-use'),
   userNotFound('auth/user-not-found'),
   wrongPassword('auth/wrong-password'),
   invalidEmail('auth/invalid-email'),
@@ -12,14 +12,15 @@ enum FirebaseAuthErrorCode {
     'auth/account-exists-with-different-credential',
   );
 
-  const FirebaseAuthErrorCode(this.code);
+  const FirebaseAuthError(this.code);
   final String code;
 
   String get msg =>
       _firebaseErrorMessages[code] ?? _firebaseErrorMessages['default']!;
 
-  static FirebaseAuthErrorCode? fromCode(String code) {
-    for (FirebaseAuthErrorCode value in FirebaseAuthErrorCode.values) {
+  static FirebaseAuthError? fromCode(String code) {
+    code = 'auth/$code';
+    for (FirebaseAuthError value in FirebaseAuthError.values) {
       if (value.code == code) {
         return value;
       }
@@ -144,7 +145,7 @@ enum FirebaseApiUsageErrorCode {
 
 const _firebaseErrorMessages = {
   // Authentication errors
-  'auth/email-already-exists':
+  'auth/email-already-in-use':
       'This email is already registered. Please use a different email or try signing in.',
   'auth/user-not-found':
       'Account not found. Please check your credentials or sign up.',

@@ -56,9 +56,10 @@ class AuthValidators {
   static String? username(String? value) {
     if (value!.trim().isEmpty) {
       return 'Username is required';
-    } else if (GetUtils.isUsername(value)) {
-      return 'Username is not valid';
     }
+    // else if (GetUtils.isUsername(value)) {
+    //   return 'Username is not valid';
+    // }
     return null;
   }
 }

@@ -76,7 +76,6 @@ class OrderDetailsTab extends StatelessWidget {
                       'Subtotal': 'PKR 500',
                       'Shipping': 'PKR 50',
                     }),
-
                     Divider(
                       color: AppColors.textColor2.withOpacity(0.2),
                       height: 20.h,

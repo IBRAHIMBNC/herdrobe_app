@@ -27,8 +27,7 @@ class OtpVerificationSheet extends StatelessWidget {
           kPadding24.verticalSpace,
           OTPField(
             onCompleted: (otp) async {
-              Get.back();
-              Get.toNamed(Routes.PROFILE_COMPLETION);
+              Get.back<bool>(result: true);
             },
           ),
           kPadding24.verticalSpace,

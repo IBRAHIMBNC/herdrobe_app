@@ -54,11 +54,13 @@ class ConfirmationSheet extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          CustomText.paragraph(
-            message ?? 'This action cannot be undone',
-            textAlign: TextAlign.center,
-            color: AppColors.textColor2,
-          ),
+          if (message != null)
+            CustomText.paragraph(
+              message!,
+              textAlign: TextAlign.center,
+              color: AppColors.textColor2,
+            ),
+
           const SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

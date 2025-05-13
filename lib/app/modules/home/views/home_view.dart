@@ -27,33 +27,37 @@ class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return GetBuilder<HomeController>(
+      builder:
+          (controller) => Scaffold(
+            body: Stack(
               children: [
-                180.verticalSpace,
-                PromotionBanner(),
-                16.verticalSpace,
-                16.verticalSpace,
-                Categories(),
-                16.verticalSpace,
-                NearYouSection(),
-                16.verticalSpace,
-                RecentViewedSection(),
-                16.verticalSpace,
+                SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      180.verticalSpace,
+                      PromotionBanner(),
+                      16.verticalSpace,
+                      16.verticalSpace,
+                      Categories(),
+                      16.verticalSpace,
+                      NearYouSection(),
+                      16.verticalSpace,
+                      RecentViewedSection(),
+                      16.verticalSpace,
+                    ],
+                  ),
+                ),
+                _buildAppBar(context),
               ],
             ),
           ),
-          _buildAppBar(context),
-        ],
-      ),
     );
   }
 
   Widget _buildAppBar(BuildContext context) {
+    final controller = Get.find<HomeController>();
     return SizedBox(
       height: 180.h,
       child: Stack(
@@ -78,38 +82,39 @@ class HomeView extends GetView<HomeController> {
               children: [
                 SizedBox(
                   height: 48.h,
-                  child: MyListTile(
-                    onTap: () {},
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    padding: kPadding24.hp,
-                    horizontalSpacing: 10.w,
-                    leading: CircleAvatar(
-                      radius: 24.r,
-                      backgroundColor: AppColors.white,
-                      child: CustomImage.fromSize(
-                        MyUtils.getTempLink(),
-                        radius: 50.r,
-                        size: 45.sp,
-
-                        fit: BoxFit.cover,
+                  child: Obx(
+                    () => MyListTile(
+                      onTap: () {},
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      padding: kPadding24.hp,
+                      horizontalSpacing: 10.w,
+                      leading: CircleAvatar(
+                        radius: 24.r,
+                        backgroundColor: AppColors.white,
+                        child: CustomImage.fromSize(
+                          controller.currentUser?.imageUrl ?? '',
+                          radius: 50.r,
+                          size: 45.sp,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    title: CustomText.boldHeading18(
-                      'Hi Morgan!',
-                      color: AppColors.white,
-                    ),
-                    verticalSpacing: 4.h,
-                    subtitle: CustomText.small12(
-                      'Hope you will be doing great',
-                      color: AppColors.white,
-                    ),
-                    trailing: CircleButton(
-                      icon: AppIcons.bell,
-                      onTap: () {
-                        // Get.toNamed(Routes.NOTIFICATION);
-                      },
-                      backgroundColor: AppColors.white.withOpacity(0.2),
-                      iconColor: AppColors.white,
+                      title: CustomText.boldHeading18(
+                        controller.currentUser?.fullName.capitalizeFirst ?? '',
+                        color: AppColors.white,
+                      ),
+                      verticalSpacing: 4.h,
+                      subtitle: CustomText.small12(
+                        'Hope you will be doing great',
+                        color: AppColors.white,
+                      ),
+                      trailing: CircleButton(
+                        icon: AppIcons.bell,
+                        onTap: () {
+                          // Get.toNamed(Routes.NOTIFICATION);
+                        },
+                        backgroundColor: AppColors.white.withOpacity(0.2),
+                        iconColor: AppColors.white,
+                      ),
                     ),
                   ),
                 ),

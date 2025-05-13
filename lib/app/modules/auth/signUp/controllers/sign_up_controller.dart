@@ -5,6 +5,7 @@ import 'package:herdrobe_app/app/data/services/app_state_service.dart';
 import 'package:herdrobe_app/app/data/services/auth_service.dart';
 import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/app/utils/loading_overlay.dart';
+import 'package:herdrobe_app/app/utils/snackbars.dart';
 import 'package:herdrobe_app/app/widgets/bottom_sheets/otp_vertification_sheet.dart/VerificationCodeSentSheet.dart';
 
 class SignUpController extends GetxController {
@@ -34,12 +35,9 @@ class SignUpController extends GetxController {
         return;
       }
       isAppLoading = false;
-      Get.snackbar(
-        'Sign up Failed',
-        _authService.authError?.msg ?? 'Unknown error',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
+      showErrorSnackBar(
+        title: 'Sign up Failed',
+        message: _authService.authError?.msg ?? 'Unknown error',
       );
 
       // final result = await Get.bottomSheet(

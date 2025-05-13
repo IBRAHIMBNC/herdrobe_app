@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     const double designWidth = 393;
     const double designHeight = 852;
-    FirebaseAuth.instance.signOut();
+    // FirebaseAuth.instance.signOut();
     return ScreenUtilInit(
       designSize: Size(designWidth, designHeight),
       minTextAdapt: true,

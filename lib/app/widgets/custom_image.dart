@@ -166,7 +166,7 @@ class CustomImage extends StatelessWidget {
         height: height, // Pass height
         fit: fit,
         placeholder: (context, url) => _buildShimmer(),
-        errorWidget: (context, url, error) => _buildErrorWidget(),
+        errorWidget: (context, url, error) => _buildShimmer(),
         color: color,
       );
     }
@@ -188,13 +188,16 @@ class CustomImage extends StatelessWidget {
         width: width, // Pass width
         height: height, // Pass height
         fit: fit,
-        errorBuilder: (context, error, stackTrace) => _buildErrorWidget(),
+        errorBuilder: (context, error, stackTrace) => _buildShimmer(),
         color: color,
       );
     }
   }
 
   Widget _buildShimmer() {
+    if (errorWidget != null) {
+      return errorWidget!;
+    }
     return Shimmer.fromColors(
       baseColor: Colors.grey[300]!,
       highlightColor: Colors.grey[100]!,

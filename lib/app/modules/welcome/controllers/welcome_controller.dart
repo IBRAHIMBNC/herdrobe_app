@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
+import 'package:herdrobe_app/app/data/models/user.dart';
+import 'package:herdrobe_app/app/data/services/auth_service.dart';
 
 class WelcomeController extends GetxController {
-  //TODO: Implement WelcomeController
+  final AuthService _authService = Get.find<AuthService>();
 
-  final count = 0.obs;
+  AppUser? get currentUser => _authService.currentUser.value;
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +20,4 @@ class WelcomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

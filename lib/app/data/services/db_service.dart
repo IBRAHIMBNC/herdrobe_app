@@ -22,7 +22,7 @@ class DbService extends GetxService {
   String? get currentUserId {
     final authService = Get.find<AuthService>();
     final user = authService.currentUser;
-    return user?.uid;
+    return user.value?.uid;
   }
 
   String get generateDocId {
@@ -34,7 +34,7 @@ class DbService extends GetxService {
     final user = authService.currentUser;
     return FirebaseFirestore.instance
         .collection('Carts')
-        .doc(user?.uid)
+        .doc(user.value?.uid)
         .collection('Items');
   }
 
@@ -50,9 +50,7 @@ class DbService extends GetxService {
     DocumentReference userRef = usersReference.doc(user.uid);
     DocumentSnapshot userSnapshot = await userRef.get();
 
-    if (userSnapshot.exists && !isUpdateUserOnly) {
-      await userRef.update(user.toMap());
-    } else {
+    if (userSnapshot.exists) {
       await userRef.update(user.toMap());
     }
   }

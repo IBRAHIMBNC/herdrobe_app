@@ -1,8 +1,11 @@
 import 'package:get/get.dart';
+import 'package:herdrobe_app/app/data/models/user.dart';
+import 'package:herdrobe_app/app/data/services/auth_service.dart';
 
 class ProfileController extends GetxController {
-  //TODO: Implement ProfileController
+  final authService = Get.find<AuthService>();
 
+  AppUser? get currentUser => authService.currentUser.value;
   final count = 0.obs;
   @override
   void onInit() {

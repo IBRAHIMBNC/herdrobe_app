@@ -1,5 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
+
 import 'package:herdrobe_app/app/data/enums/user_type.dart';
 import 'package:herdrobe_app/app/utils/safe_parsing.dart';
 
@@ -20,6 +23,7 @@ class AppUser extends Equatable {
   final DateTime createdAt;
   final DateTime updatedAt;
   final DateTime? isSuspended;
+  final String? location;
 
   const AppUser({
     required this.uid,
@@ -38,6 +42,7 @@ class AppUser extends Equatable {
     required this.createdAt,
     required this.updatedAt,
     this.isSuspended,
+    this.location,
   });
 
   factory AppUser.create({
@@ -71,6 +76,8 @@ class AppUser extends Equatable {
       userType: userType,
       createdAt: DateTime.now(),
       updatedAt: DateTime.now(),
+      isSuspended: null,
+      location: null,
     );
   }
 
@@ -109,6 +116,7 @@ class AppUser extends Equatable {
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       isSuspended: isSuspended ?? this.isSuspended,
+      location: location ?? this.location,
     );
   }
 
@@ -130,6 +138,7 @@ class AppUser extends Equatable {
       'createdAt': createdAt.millisecondsSinceEpoch,
       'updatedAt': updatedAt.millisecondsSinceEpoch,
       'isSuspended': isSuspended?.millisecondsSinceEpoch,
+      'location': location,
     };
   }
 
@@ -154,6 +163,7 @@ class AppUser extends Equatable {
       createdAt: SafeParsing.parseDate(map['createdAt']) ?? DateTime.now(),
       updatedAt: SafeParsing.parseDate(map['updatedAt']) ?? DateTime.now(),
       isSuspended: SafeParsing.parseDate(map['isSuspended']),
+      location: map['location'] as String?,
     );
   }
 
@@ -184,6 +194,7 @@ class AppUser extends Equatable {
       createdAt,
       updatedAt,
       isSuspended,
+      location,
     ];
   }
 }

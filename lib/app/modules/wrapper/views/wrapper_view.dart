@@ -19,8 +19,7 @@ class WrapperView extends GetView<WrapperController> {
         }
 
         if (controller.isLoggedIn) {
-          final showCompletionPage =
-              controller.displayName == kUserCompleteProfile;
+          final showCompletionPage = controller.displayName != kUserCompleted;
 
           if (showCompletionPage) {
             return GetRouterOutlet(initialRoute: Routes.PROFILE_COMPLETION);

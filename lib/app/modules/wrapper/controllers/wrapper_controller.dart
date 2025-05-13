@@ -32,10 +32,10 @@ class WrapperController extends GetxController {
   /// Initializes the ViewModel by listening to authentication state changes.
   init() async {
     if (isLoggedIn) {
-      _authService.currentUser =
+      _authService.currentUser.value =
           (await _databaseService.fetchUserData(_authService.firebaseUser!)) ??
-          _authService.currentUser;
-      infoLog.i('User fetched: ${_authService.currentUser?.toMap()}');
+          _authService.currentUser.value;
+      infoLog.i('User fetched: ${_authService.currentUser.value?.toMap()}');
       // _appStateService.init();
       isAppLoading = false;
     }

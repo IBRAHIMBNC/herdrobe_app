@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:herdrobe_app/app/data/services/auth_service.dart';
 import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/app/utils/loading_overlay.dart';
+import 'package:herdrobe_app/app/utils/snackbars.dart';
 
 class LoginController extends GetxController {
   final _authService = Get.find<AuthService>();
@@ -24,13 +25,18 @@ class LoginController extends GetxController {
         return;
       }
       isAppLoading = false;
-      Get.snackbar(
-        'Login Failed',
-        _authService.authError?.msg ?? 'Unknown error',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
+      // formKey.currentState!.reset();
+      showErrorSnackBar(
+        title: 'Login Failed',
+        message: _authService.authError?.msg,
       );
+      // Get.snackbar(
+      //   'Login Failed',
+      //   _authService.authError?.msg ?? ,
+      //   snackPosition: SnackPosition.BOTTOM,
+      //   backgroundColor: Colors.red,
+      //   colorText: Colors.white,
+      // );
     }
   }
 

@@ -1,1 +1,1 @@
-const String kUserCompleteProfile = 'user_complete_profile';
+const String kUserCompleted = 'user_completed';

@@ -11,7 +11,7 @@ import 'package:herdrobe_app/main.dart';
 
 class AuthService extends GetxService {
   final bool isAdmin = false;
-  AppUser? currentUser;
+  Rxn<AppUser> currentUser = Rxn<AppUser>();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final _databaseService = Get.find<DbService>();
 
@@ -23,7 +23,7 @@ class AuthService extends GetxService {
   init() async {
     if (firebaseUser != null) {
       try {
-        currentUser = await _databaseService.fetchUserData(firebaseUser!);
+        currentUser.value = await _databaseService.fetchUserData(firebaseUser!);
       } catch (e) {
         errorLog.e('Error fetching user data: $e');
       }
@@ -38,8 +38,17 @@ class AuthService extends GetxService {
 
   Future<void> signOut() async {
     // _databaseService.updateFCMToken(currentUser!.uid, null);
-    currentUser = null;
-    return _firebaseAuth.signOut();
+    currentUser.value = null;
+    await _firebaseAuth.signOut();
+  }
+
+  updateProfile(AppUser appUser) async {
+    try {
+      await _databaseService.updateUser(appUser);
+      currentUser.value = appUser;
+    } catch (e) {
+      errorLog.e('Error updating user data: $e');
+    }
   }
 
   Future<bool> createUserWithEmailAndPassword({
@@ -64,9 +73,8 @@ class AuthService extends GetxService {
       user = userCredential.user;
       appUser = appUser.copyWith(uid: user!.uid, photoUrl: imageUrl);
       _databaseService.addUser(appUser);
-      //TODO: add user to firestore
-      await user.updateDisplayName(kUserCompleteProfile);
-      await user.reload();
+      // await user.updateDisplayName(kUserIncomplete);
+      // await user.reload();
       user = _firebaseAuth.currentUser;
       if (sendVerificationMail) {
         await user?.sendEmailVerification();
@@ -97,7 +105,7 @@ class AuthService extends GetxService {
       user = userCredential.user;
 
       infoLog.i(" User SignIn Successful");
-      currentUser = await _databaseService.fetchUserData(user!);
+      currentUser.value = await _databaseService.fetchUserData(user!);
       // updateFcmToken();
 
       return true;
@@ -166,7 +174,7 @@ class AuthService extends GetxService {
   ) async {
     try {
       final credential = EmailAuthProvider.credential(
-        email: currentUser!.email,
+        email: currentUser.value!.email,
         password: currentPassword,
       );
       await firebaseUser!.reauthenticateWithCredential(credential).catchError((

@@ -3,10 +3,9 @@ enum FirebaseAuthError {
   emailAlreadyExists('auth/email-already-in-use'),
   userNotFound('auth/user-not-found'),
   wrongPassword('auth/wrong-password'),
-  invalidEmail('auth/invalid-email'),
-  invalidPassword('auth/invalid-password'),
   weakPassword('auth/weak-password'),
   tooManyRequests('auth/too-many-requests'),
+  invalidCredential('auth/invalid-credential'),
   operationNotAllowed('auth/operation-not-allowed'),
   accountExistsWithDifferentCredential(
     'auth/account-exists-with-different-credential',
@@ -178,7 +177,7 @@ const _firebaseErrorMessages = {
       'System error: Insufficient permissions. Please contact support.',
   'auth/internal-error': 'An unexpected error occurred. Please try again.',
   'auth/invalid-credential':
-      'System authentication error. Please contact support.',
+      'Please chec your email and password and try again.',
   'auth/project-not-found':
       'System configuration error. Please contact support.',
 

@@ -36,17 +36,17 @@ class ProfileView extends GetView<ProfileController> {
               padding: kPadding16.all,
               border: BorderSide(color: AppColors.black5, width: 1),
               leading: CustomImage.fromSize(
-                MyUtils.getTempLink(),
+                controller.currentUser?.imageUrl ?? AppIcons.user,
                 radius: 40.r,
                 size: 56.w,
               ),
               verticalSpacing: 4.h,
               title: CustomText.boldHeading18(
-                'Ibrahim Nisar',
+                controller.currentUser?.fullName ?? '',
                 fontWeight: FontWeight.bold,
               ),
               subtitle: CustomText.small12(
-                'roobye647@gmail.com',
+                controller.currentUser?.email ?? '',
                 color: AppColors.textColor2,
               ),
               trailing: CircleButton(

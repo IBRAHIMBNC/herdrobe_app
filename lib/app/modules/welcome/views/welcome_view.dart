@@ -69,14 +69,16 @@ class WelcomeView extends GetView<WelcomeController> {
                     ],
                   ),
                   8.verticalSpace,
-                  CustomText.largeHeading('Morgan alim!'),
+                  CustomText.largeHeading(
+                    controller.currentUser?.fullName ?? '',
+                  ),
                   40.verticalSpace,
 
                   CircleAvatar(
                     radius: 104.r,
                     backgroundColor: AppColors.brand,
                     child: CustomImage.fromSize(
-                      MyUtils.getTempLink(),
+                      controller.currentUser?.imageUrl ?? '',
                       radius: 100.r,
                       size: 198.h,
                       backgroundColor: AppColors.white,

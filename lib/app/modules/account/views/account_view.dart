@@ -11,12 +11,16 @@ import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/utils/my_utils.dart';
+import 'package:herdrobe_app/app/widgets/bottom_sheets/edit_field_sheet.dart';
 import 'package:herdrobe_app/app/widgets/circle_button.dart';
 import 'package:herdrobe_app/app/widgets/custom_image.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
+import 'package:herdrobe_app/app/widgets/custom_text_field.dart';
+import 'package:herdrobe_app/app/widgets/generic_bottom_sheet.dart';
 import 'package:herdrobe_app/app/widgets/my_appbar.dart';
 import 'package:herdrobe_app/app/widgets/my_container.dart';
 import 'package:herdrobe_app/app/widgets/my_list_tile.dart';
+import 'package:herdrobe_app/app/widgets/my_rounded_button.dart';
 
 import '../controllers/account_controller.dart';
 
@@ -25,94 +29,93 @@ class AccountView extends GetView<AccountController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MyAppBar(
-        leading: CircleButton(
-          icon: Icon(Icons.menu, color: AppColors.black),
-
-          onTap: () {
-            adminNavigationScafoldKey.currentState?.openDrawer();
-          },
-        ),
-        title: 'Account',
-      ),
-      body: Container(
-        width: double.infinity,
-        padding: kPadding24.hp,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            32.verticalSpace,
-            Align(child: _buildProfilePicture(MyUtils.getTempLink(), () {})),
-            16.verticalSpace,
-
-            MyContainer(
-              radius: 16.r,
-              border: BorderSide(color: AppColors.black5),
-              padding: kPadding16.all,
+    return GetBuilder<AccountController>(
+      builder:
+          (controller) => Scaffold(
+            appBar: MyAppBar(leading: _buildDrawerButton(), title: 'Account'),
+            body: Container(
+              width: double.infinity,
+              padding: kPadding24.hp,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText.smallHeading16('Account Info'),
-                  16.verticalSpace,
-                  _buildAccountInfoContainer(
-                    title: 'User Name',
-                    value: 'Ibrahim Nisar',
-                    onTap: () {},
-                  ),
-                  16.verticalSpace,
-                  _buildAccountInfoContainer(
-                    title: 'Email',
-                    value: 'lovedose114@gmail.com',
-                  ),
-                ],
-              ),
-            ),
-            16.verticalSpace,
-            MyContainer(
-              padding: kPadding20.all,
-              border: BorderSide(color: AppColors.black5),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomText.smallHeading16('Account Management'),
-                  24.verticalSpace,
-                  _buildSettingButton(
-                    path: AppIcons.lock,
-                    title: 'Change Password',
-                    onTap: () {
-                      Get.toNamed(Routes.CHANGE_PASSWORD);
-                    },
-                  ),
-                  if (controller.isAdmin) ...[
-                    24.verticalSpace,
-                    _buildSettingButton(
-                      path: AppIcons.document,
-                      title: 'Delete Account',
-                      onTap: () {
-                        Get.toNamed(Routes.DELETE_ACCOUNT);
-                      },
+                  32.verticalSpace,
+                  Align(
+                    child: _buildProfilePicture(
+                      controller.currentUser?.imageUrl,
+                      () {},
                     ),
-                  ],
-                  12.verticalSpace,
+                  ),
+                  16.verticalSpace,
+
+                  MyContainer(
+                    radius: 16.r,
+                    border: BorderSide(color: AppColors.black5),
+                    padding: kPadding16.all,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText.smallHeading16('Account Info'),
+                        16.verticalSpace,
+                        _buildAccountInfoContainer(
+                          title: 'Name',
+                          value: controller.currentUser?.fullName ?? '',
+                          onTap: controller.changeName,
+                        ),
+                        16.verticalSpace,
+                        _buildAccountInfoContainer(
+                          title: 'Email',
+                          value: controller.currentUser?.email ?? '',
+                        ),
+                      ],
+                    ),
+                  ),
+                  16.verticalSpace,
+                  MyContainer(
+                    padding: kPadding20.all,
+                    border: BorderSide(color: AppColors.black5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomText.smallHeading16('Account Management'),
+                        24.verticalSpace,
+                        _buildSettingButton(
+                          iconPath: AppIcons.lock,
+                          title: 'Change Password',
+                          onTap: () {
+                            Get.toNamed(Routes.CHANGE_PASSWORD);
+                          },
+                        ),
+                        if (controller.isAdmin) ...[
+                          24.verticalSpace,
+                          _buildSettingButton(
+                            iconPath: AppIcons.document,
+                            title: 'Delete Account',
+                            onTap: () {
+                              Get.toNamed(Routes.DELETE_ACCOUNT);
+                            },
+                          ),
+                        ],
+                        12.verticalSpace,
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
+          ),
     );
   }
 
   MyListTile _buildSettingButton({
-    required String path,
+    required String iconPath,
     required String title,
     Function()? onTap,
   }) {
     return MyListTile(
       title: CustomText.paragraph(title, color: AppColors.textColor1),
       leading: CustomImage.fromSize(
-        path,
+        iconPath,
         size: 20.sp,
         color: AppColors.black,
         fit: BoxFit.contain,
@@ -160,19 +163,21 @@ class AccountView extends GetView<AccountController> {
       alignment: Alignment.center,
       children: [
         MyContainer(
+          onTap: controller.changeProfile,
           padding: 2.0.all,
           radius: 150.r,
           color: AppColors.brand,
-          child: MyContainer(
-            height: 112.r,
-            width: 112.r,
+          child: CustomImage.fromSize(
+            imageUrl ?? '',
+            backgroundColor: AppColors.white,
             radius: 150.r,
-            color: AppColors.white,
-            child: Icon(
+            errorWidget: Icon(
               CupertinoIcons.person_fill,
               size: 60.sp,
               color: AppColors.grey,
             ),
+
+            size: 112.r,
           ),
         ),
         Positioned(
@@ -190,5 +195,16 @@ class AccountView extends GetView<AccountController> {
         ),
       ],
     );
+  }
+
+  _buildDrawerButton() {
+    return !controller.isAdmin
+        ? null
+        : CircleButton(
+          icon: Icon(Icons.menu, color: AppColors.black),
+          onTap: () {
+            adminNavigationScafoldKey.currentState?.openDrawer();
+          },
+        );
   }
 }

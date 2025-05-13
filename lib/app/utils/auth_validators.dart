@@ -62,4 +62,13 @@ class AuthValidators {
     // }
     return null;
   }
+
+  static String? cnic(String? value) {
+    if (value!.trim().isEmpty) {
+      return 'CNIC is required';
+    } else if (value.length != 13) {
+      return 'CNIC must be 13 digits';
+    }
+    return null;
+  }
 }

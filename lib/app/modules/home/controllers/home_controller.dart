@@ -1,9 +1,15 @@
 import 'package:get/get.dart';
+import 'package:herdrobe_app/app/data/models/user.dart';
+import 'package:herdrobe_app/app/data/services/auth_service.dart';
 import 'package:herdrobe_app/app/utils/my_utils.dart';
 
 class HomeController extends GetxController {
+  final authService = Get.find<AuthService>();
   // Banner carousel related
   final currentBannerIndex = 0.obs;
+
+  AppUser? get currentUser => authService.currentUser.value;
+
   final List<String> banners = [
     MyUtils.getTempLink(),
     MyUtils.getTempLink(),
@@ -17,7 +23,9 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    print('HomeController initialized');
+    ever(authService.currentUser, (user) {
+      update();
+    });
     super.onInit();
   }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:herdrobe_app/app/data/models/order.dart';
+import 'package:herdrobe_app/app/data/models/product.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
 import 'package:herdrobe_app/app/widgets/bottom_sheets/product_review_sheet.dart';
@@ -67,7 +68,10 @@ class MyOrderContainer extends StatelessWidget {
               ],
             ),
             const Divider(color: AppColors.lightGrey),
-            ProductDetailsCard.listTile(showBorder: false),
+            ProductDetailsCard.listTile(
+              productModel: ProductModel.empty(),
+              showBorder: false,
+            ),
           ],
         ),
       ),

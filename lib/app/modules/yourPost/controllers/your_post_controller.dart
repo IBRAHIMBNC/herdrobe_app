@@ -1,11 +1,16 @@
 import 'package:get/get.dart';
+import 'package:herdrobe_app/app/data/models/product.dart';
+import 'package:herdrobe_app/app/data/services/product_service.dart';
 
 class YourPostController extends GetxController {
-  //TODO: Implement YourPostController
+  final productService = Get.find<ProductService>();
+  List<ProductModel> get myProducts => productService.myPorducts;
 
-  final count = 0.obs;
   @override
   void onInit() {
+    ever(productService.myPorducts, (products) {
+      update();
+    });
     super.onInit();
   }
 
@@ -18,6 +23,4 @@ class YourPostController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

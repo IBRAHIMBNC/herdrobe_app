@@ -30,6 +30,18 @@ class LoginView extends GetView<LoginController> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton.icon(
+                      onPressed: () => Get.offNamed(Routes.NAVIGATION),
+                      iconAlignment: IconAlignment.end,
+                      icon: Icon(Icons.arrow_forward, color: AppColors.brand),
+                      label: CustomText.paragraph(
+                        'Skip',
+                        color: AppColors.brand,
+                      ),
+                    ),
+                  ),
                   Image.asset(AppImages.logo, height: 100.h, width: 100.w),
                   kPadding40.verticalSpace,
 

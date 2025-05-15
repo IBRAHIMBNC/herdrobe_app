@@ -45,10 +45,11 @@ class CustomImage extends StatelessWidget {
   /// Image Color
   final Color? color;
 
+  final bool hideChild;
+
   const CustomImage(
     this.imagePath, {
     Key? key,
-
     required this.width,
     required this.height,
     this.fit = BoxFit.cover,
@@ -60,6 +61,7 @@ class CustomImage extends StatelessWidget {
     this.smoothness = 1.0,
     this.child,
     this.color,
+    this.hideChild = false,
   }) : super(key: key);
 
   const CustomImage.fromSize(
@@ -75,6 +77,7 @@ class CustomImage extends StatelessWidget {
     this.smoothness = 1.0,
     this.child,
     this.color,
+    this.hideChild = false,
   }) : height = size,
        width = size,
        super(key: key);
@@ -92,6 +95,7 @@ class CustomImage extends StatelessWidget {
     this.smoothness = 1.0,
     this.child,
     this.color,
+    this.hideChild = false,
   }) : height = size,
        width = size,
        super(key: key);
@@ -111,13 +115,17 @@ class CustomImage extends StatelessWidget {
         fit: StackFit.expand, // Make stack children fill the container
         children: [
           _buildImage(), // Image is the base layer
-          if (child != null) child!, // Display child on top if provided
+          if (child != null && !hideChild)
+            child!, // Display child on top if provided
         ],
       ),
     );
   }
 
   Widget _buildImage() {
+    if (imagePath.isEmpty) {
+      return SizedBox.shrink();
+    }
     // Check if image path is a Lottie animation
     if (_isLottieAnimation(imagePath)) {
       return Lottie.asset(imagePath, width: width, height: height, fit: fit);

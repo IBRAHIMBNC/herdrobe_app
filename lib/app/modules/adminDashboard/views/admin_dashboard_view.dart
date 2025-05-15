@@ -7,6 +7,7 @@ import 'package:herdrobe_app/app/data/enums/admin_sections.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
 import 'package:herdrobe_app/app/data/extensions/enum.dart';
 import 'package:herdrobe_app/app/data/extensions/widget.dart';
+import 'package:herdrobe_app/app/data/models/product.dart';
 import 'package:herdrobe_app/app/modules/adminDashboard/views/widgets/sliver_appbar.dart';
 import 'package:herdrobe_app/app/modules/adminDashboard/views/widgets/user_details_card.dart';
 import 'package:herdrobe_app/app/routes/app_pages.dart';
@@ -47,7 +48,9 @@ class AdminDashboardView extends GetView<AdminDashboardController> {
                   separatorBuilder:
                       (context, index) => kPadding12.verticalSpace,
                   itemBuilder: (context, index) {
-                    return ProductDetailsCard.listTile().boxShadow();
+                    return ProductDetailsCard.listTile(
+                      productModel: ProductModel.empty(),
+                    ).boxShadow();
                   },
                 ),
                 kPadding8.verticalSpace,

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/data/enums/payment_method.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
+import 'package:herdrobe_app/app/data/models/product.dart';
 import 'package:herdrobe_app/app/modules/checkOut/views/widgets/checkout_item_card.dart';
 import 'package:herdrobe_app/app/utils/app_colors.dart';
 import 'package:herdrobe_app/app/utils/app_icons.dart';
@@ -45,7 +46,10 @@ class CheckOutView extends GetView<CheckOutController> {
                   children: [
                     Padding(
                       padding: kPadding8.all,
-                      child: ProductDetailsCard.listTile(showBorder: false),
+                      child: ProductDetailsCard.listTile(
+                        productModel: ProductModel.empty(),
+                        showBorder: false,
+                      ),
                     ),
                   ],
                 ),

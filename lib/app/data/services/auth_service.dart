@@ -7,6 +7,7 @@ import 'package:herdrobe_app/app/data/enums/firebase_exceptions.dart';
 import 'package:herdrobe_app/app/data/models/user.dart';
 import 'package:herdrobe_app/app/data/services/db_service.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
+import 'package:herdrobe_app/app/routes/app_pages.dart';
 import 'package:herdrobe_app/main.dart';
 
 class AuthService extends GetxService {
@@ -40,6 +41,7 @@ class AuthService extends GetxService {
     // _databaseService.updateFCMToken(currentUser!.uid, null);
     currentUser.value = null;
     await _firebaseAuth.signOut();
+    Get.offAllNamed(Routes.WRAPPER);
   }
 
   updateProfile(AppUser appUser) async {

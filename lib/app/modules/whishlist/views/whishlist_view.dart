@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
+import 'package:herdrobe_app/app/data/models/product.dart';
 import 'package:herdrobe_app/app/widgets/my_appbar.dart';
 import 'package:herdrobe_app/app/widgets/product_details_card.dart';
 
@@ -20,9 +21,15 @@ class WhishlistView extends GetView<WhishlistController> {
         child: Column(
           children: [
             16.verticalSpace,
-            ProductDetailsCard.listTile(isFavorite: true),
+            ProductDetailsCard.listTile(
+              productModel: ProductModel.empty(),
+              isFavorite: true,
+            ),
             16.verticalSpace,
-            ProductDetailsCard.listTile(isFavorite: true),
+            ProductDetailsCard.listTile(
+              productModel: ProductModel.empty(),
+              isFavorite: true,
+            ),
           ],
         ),
       ),

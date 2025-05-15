@@ -3,6 +3,9 @@ import 'dart:math' as math;
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:herdrobe_app/app/data/services/auth_service.dart';
 
 class MyUtils {
   MyUtils._();
@@ -35,6 +38,10 @@ class MyUtils {
     } catch (e) {
       return AssetImage(defaultImage ?? 'assets/images/profilePH.png');
     }
+  }
+
+  static String? getUserId() {
+    return Get.find<AuthService>().firebaseUser?.uid;
   }
 
   // static ImageProvider getDummyImageProvider() {

@@ -21,7 +21,6 @@ class ProfileView extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     final topPadding = MediaQuery.paddingOf(context).top;
-    final iconSize = 20.w;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(
@@ -51,7 +50,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               trailing: CircleButton(
                 icon: AppIcons.logout,
-                onTap: () {},
+                onTap: controller.logout,
                 iconColor: AppColors.black,
                 radius: 25.r,
               ),

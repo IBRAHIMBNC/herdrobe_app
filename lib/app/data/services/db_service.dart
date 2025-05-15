@@ -6,6 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
+import 'package:herdrobe_app/app/data/models/product.dart';
 import 'package:herdrobe_app/app/data/models/user.dart';
 import 'package:herdrobe_app/app/data/services/auth_service.dart';
 import 'package:herdrobe_app/main.dart';
@@ -72,9 +73,82 @@ class DbService extends GetxService {
   }
 
   //=========================================
+  // Product Related Methods
+  //=========================================
+
+  Future<void> addProduct(ProductModel product) async {
+    await productsReference.doc(product.id).set(product.toMap()).catchError((
+      error,
+    ) {
+      errorLog.e('Error adding product: $error');
+    });
+  }
+
+  Future<void> updateProduct(ProductModel product) async {
+    await productsReference.doc(product.id).update(product.toMap()).catchError((
+      error,
+    ) {
+      errorLog.e('Error updating product: $error');
+    });
+  }
+
+  Future<void> deleteProduct(ProductModel product) async {
+    product.imageUrls.forEach((url) {
+      deleteFileByUrl(url);
+    });
+    await productsReference.doc(product.id).delete().catchError((error) {
+      errorLog.e('Error deleting product: $error');
+    });
+  }
+
+  Future<List<ProductModel>> fetchUserProducts() async {
+    final authService = Get.find<AuthService>();
+    final user = authService.currentUser;
+    try {
+      final snapshot =
+          await productsReference
+              .where('sellerUid', isEqualTo: user.value?.uid)
+              .get();
+
+      return snapshot.docs
+          .map(
+            (doc) => ProductModel.fromMap(doc.data() as Map<String, dynamic>),
+          )
+          .toList();
+    } catch (e) {
+      errorLog.e('Error fetching user products: $e');
+      return [];
+    }
+  }
+
+  Future<List<String>> uploadProductImages({
+    List<File> files = const [],
+    required String productId,
+  }) async {
+    try {
+      final String path = 'Products/$productId';
+
+      final result = await Future.wait(
+        List.generate(
+          files.length,
+          (index) => _uploadImageToFireStore(
+            file: files[index],
+            path: path,
+            fileName: 'image_${index + 1}',
+          ),
+        ),
+      );
+      return result;
+    } catch (e) {
+      errorLog.e('Error uploading product images: $e');
+      return [];
+    }
+  }
+
+  //=========================================
   // Upload File to Firebase Storage
   //=========================================
-  Future<String> _uploadPostImageToFireStore({
+  Future<String> _uploadImageToFireStore({
     required File file,
     required String fileName,
     required String path,
@@ -133,7 +207,7 @@ class DbService extends GetxService {
   Future<String?> uploadProfileImage({required File file}) async {
     try {
       final String path = 'Profiles';
-      return await _uploadPostImageToFireStore(
+      return await _uploadImageToFireStore(
         file: file,
         fileName: currentUserId!,
         path: path,

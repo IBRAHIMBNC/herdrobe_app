@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
 import 'package:herdrobe_app/app/data/extensions/double.dart';
+import 'package:herdrobe_app/app/data/models/product.dart';
 import 'package:herdrobe_app/app/widgets/custom_text.dart';
 import 'package:herdrobe_app/app/widgets/product_details_card.dart';
 
@@ -24,7 +25,7 @@ class RecentViewedSection extends StatelessWidget {
               itemCount: 5,
               separatorBuilder: (context, index) => kPadding16.horizontalSpace,
               itemBuilder: (context, index) {
-                return ProductDetailsCard();
+                return ProductDetailsCard(productModel: ProductModel.empty());
               },
             ),
           ),

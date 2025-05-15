@@ -5,6 +5,7 @@ import 'package:herdrobe_app/app/data/enums/product_type.dart';
 import 'package:herdrobe_app/app/data/enums/products_category.dart';
 import 'package:herdrobe_app/app/data/enums/rent_period.dart';
 import 'package:herdrobe_app/app/data/enums/size.dart';
+import 'package:herdrobe_app/app/data/extensions/map.dart';
 import 'package:herdrobe_app/app/utils/safe_parsing.dart';
 
 class ProductModel extends Equatable {
@@ -16,13 +17,14 @@ class ProductModel extends Equatable {
   final double price;
   final bool isDeleted;
   final List<String> imageUrls;
-  final ProductsCategory? category;
+  final List<ProductsCategory> categories;
   final List<String> reviewsIds;
   final ProductType productType;
   final List<ProductSize> availableSizes;
   final RentPeriod? rentPeriod;
   final String? contactNumber;
   final DateTime createdAt;
+  final String? swapWith;
   // final
   // final double? depositAmount;
   // final String? swapCondition;r
@@ -37,13 +39,14 @@ class ProductModel extends Equatable {
     this.rating = 0,
     required this.price,
     required this.imageUrls,
-    this.category,
+    this.categories = const [],
     this.reviewsIds = const [],
     required this.productType,
     this.availableSizes = const [],
     this.rentPeriod,
     this.contactNumber,
     required this.createdAt,
+    this.swapWith,
     // this.depositAmount,
     // this.swapCondition,
   });
@@ -57,14 +60,14 @@ class ProductModel extends Equatable {
     required double price,
     required List<String> imageUrls,
     required List<ProductSize> availableSizes,
-    required int stock,
-    ProductsCategory? category,
+    List<ProductsCategory> categories = const [],
     double rating = 0,
     List<String> reviewsIds = const [],
     int? totalSold,
     bool isDeleted = false,
     String? contactNumber,
     DateTime? createdAt,
+
     // this.depositAmount,
     // this.swapCondition,
   }) {
@@ -76,7 +79,7 @@ class ProductModel extends Equatable {
       price: price,
       imageUrls: imageUrls,
       availableSizes: availableSizes,
-      category: category,
+      categories: categories,
       productType: ProductType.sell,
       rating: rating,
       reviewsIds: reviewsIds,
@@ -85,6 +88,7 @@ class ProductModel extends Equatable {
       rentPeriod: null,
       contactNumber: contactNumber,
       createdAt: createdAt ?? DateTime.now(),
+
       // depositAmount: null,
       // swapCondition: null,
     );
@@ -99,10 +103,10 @@ class ProductModel extends Equatable {
     required double price, // Price per rent period
     required List<String> imageUrls,
     required List<ProductSize> availableSizes,
-    required int stock,
+    int stock = 0,
     required RentPeriod rentType,
     required double depositAmount,
-    ProductsCategory? category,
+    List<ProductsCategory> categories = const [],
     double rating = 0,
     List<String> reviewsIds = const [],
     int? totalSold,
@@ -118,7 +122,7 @@ class ProductModel extends Equatable {
       price: price,
       imageUrls: imageUrls,
       availableSizes: availableSizes,
-      category: category,
+      categories: categories,
       productType: ProductType.rent,
       rentPeriod: rentType,
       // depositAmount: depositAmount,
@@ -140,15 +144,15 @@ class ProductModel extends Equatable {
     required List<String> imageUrls,
     required List<ProductSize> availableProductSizes,
     required int stock,
-    required List<String> acceptedCategories,
     String? swapCondition,
-    ProductsCategory? category,
+    List<ProductsCategory> categories = const [],
     double rating = 0,
     List<String> reviewsIds = const [],
     int? totalSold,
     bool isDeleted = false,
     String? contactNumber,
     DateTime? createdAt,
+    String? swapWith,
   }) {
     return ProductModel._(
       id: id,
@@ -158,17 +162,15 @@ class ProductModel extends Equatable {
       price: 0, // Price is typically 0 for swaps
       imageUrls: imageUrls,
       availableSizes: availableProductSizes,
-      category: category,
+      categories: categories,
       productType: ProductType.swap,
-      // swapCondition: swapCondition,
       rating: rating,
       reviewsIds: reviewsIds,
       isDeleted: isDeleted,
-      // Rent specific fields are null
       rentPeriod: null,
       contactNumber: contactNumber,
       createdAt: createdAt ?? DateTime.now(),
-      // depositAmount: null,
+      swapWith: swapWith,
     );
   }
 
@@ -181,7 +183,7 @@ class ProductModel extends Equatable {
     double? price,
     List<String>? imageUrls,
     bool? isDeleted,
-    ProductsCategory? category,
+    List<ProductsCategory>? categories,
     List<String>? reviewsIds,
     ProductType? productType,
     List<ProductSize>? availableSizes,
@@ -193,6 +195,7 @@ class ProductModel extends Equatable {
     String? swapCondition,
     String? contactNumber,
     DateTime? createdAt,
+    String? swapWith,
   }) {
     // Use the private constructor for copyWith as well
     return ProductModel._(
@@ -204,13 +207,14 @@ class ProductModel extends Equatable {
       price: price ?? this.price,
       imageUrls: imageUrls ?? this.imageUrls,
       isDeleted: isDeleted ?? this.isDeleted,
-      category: category ?? this.category,
+      categories: categories ?? this.categories,
       reviewsIds: reviewsIds ?? this.reviewsIds,
       productType: productType ?? this.productType,
       availableSizes: availableSizes ?? this.availableSizes,
       rentPeriod: rentType ?? this.rentPeriod,
       contactNumber: contactNumber ?? this.contactNumber,
       createdAt: createdAt ?? this.createdAt,
+      swapWith: swapWith ?? this.swapWith,
       // depositAmount: depositAmount ?? this.depositAmount,
       // swapCondition: swapCondition ?? this.swapCondition,
     );
@@ -227,7 +231,8 @@ class ProductModel extends Equatable {
       'price': price,
       'imageUrls': imageUrls,
       'isDeleted': isDeleted,
-      'category': category?.name, // Store enum name
+      'categories':
+          categories.map((cat) => cat.name).toList(), // Store enum names
       'reviewsIds': reviewsIds,
       'productType': productType.name, // Store enum name
       'availableSizes':
@@ -235,6 +240,7 @@ class ProductModel extends Equatable {
       'contactNumber': contactNumber,
       'rentPeriod': rentPeriod?.name,
       'createdAt': createdAt.millisecondsSinceEpoch,
+      'swapWith': swapWith,
     };
   }
 
@@ -254,9 +260,10 @@ class ProductModel extends Equatable {
         (url) => url.toString(),
       ),
       isDeleted: SafeParsing.parseBool(map['isDeleted']),
-      category: ProductsCategory.fromString(
-        map['category'] as String?,
-      ), // Default to null if parsing fails
+      categories: SafeParsing.parseList(
+        map['categories'],
+        (cat) => ProductsCategory.fromString(cat),
+      ),
       // reviewsIds: List<String>.from(
       //   (map['reviewsIds'] as List<dynamic>? ?? []).map((e) => e.toString()),
       // ),
@@ -274,6 +281,7 @@ class ProductModel extends Equatable {
       rentPeriod: SafeParsing.parseEnum(map['rentType'], RentPeriod.values),
       contactNumber: map['contactNumber'] as String?,
       createdAt: SafeParsing.parseDate(map['createdAt']) ?? DateTime.now(),
+      swapWith: map['swapWith'] as String?,
     );
   }
 
@@ -287,13 +295,14 @@ class ProductModel extends Equatable {
     price,
     isDeleted,
     imageUrls,
-    category,
+    categories,
     reviewsIds,
     productType,
     availableSizes,
     rentPeriod,
     contactNumber,
     createdAt,
+    swapWith,
   ];
 
   // Factory constructor for creating an empty ProductModel
@@ -311,102 +320,8 @@ class ProductModel extends Equatable {
       createdAt: DateTime.now(),
     );
   }
-
-  // Static method for dummy data
-  static ProductModel dummy() {
-    final random = Random();
-    final productType =
-        ProductType.values[random.nextInt(ProductType.values.length)];
-    final sizes = ProductSize.values.toList()..shuffle();
-    final availableSizes =
-        sizes.take(random.nextInt(ProductSize.values.length) + 1).toList();
-
-    switch (productType) {
-      case ProductType.sell:
-        return ProductModel.forSale(
-          id: 'dummy_id_${random.nextInt(1000)}',
-          sellerUid: 'dummy_seller_${random.nextInt(100)}',
-          name: 'Dummy Sell Product ${random.nextInt(100)}',
-          description: 'This is a dummy description for a sell product.',
-          price: (random.nextDouble() * 100).roundToDouble() + 10,
-          imageUrls: [
-            'https://via.placeholder.com/150/FF0000/FFFFFF?text=Dummy1',
-            'https://via.placeholder.com/150/00FF00/FFFFFF?text=Dummy2',
-          ],
-          availableSizes: availableSizes,
-          stock: random.nextInt(50) + 1,
-          category:
-              ProductsCategory.values[random.nextInt(
-                ProductsCategory.values.length,
-              )],
-          rating: (random.nextDouble() * 5).roundToDouble(),
-          reviewsIds: List.generate(
-            random.nextInt(5),
-            (index) => 'review_${random.nextInt(500)}',
-          ),
-          totalSold: random.nextInt(200),
-        );
-      case ProductType.rent:
-        return ProductModel.forRent(
-          id: 'dummy_id_${random.nextInt(1000)}',
-          sellerUid: 'dummy_seller_${random.nextInt(100)}',
-          name: 'Dummy Rent Product ${random.nextInt(100)}',
-          description: 'This is a dummy description for a rent product.',
-          price:
-              (random.nextDouble() * 50).roundToDouble() +
-              5, // Rent price per period
-          imageUrls: [
-            'https://via.placeholder.com/150/0000FF/FFFFFF?text=DummyRent1',
-            'https://via.placeholder.com/150/FFFF00/000000?text=DummyRent2',
-          ],
-          availableSizes: availableSizes,
-          stock: random.nextInt(10) + 1, // Lower stock for rentals typically
-          rentType: RentPeriod.values[random.nextInt(RentPeriod.values.length)],
-          depositAmount: (random.nextDouble() * 50).roundToDouble() + 20,
-          category:
-              ProductsCategory.values[random.nextInt(
-                ProductsCategory.values.length,
-              )],
-          rating: (random.nextDouble() * 5).roundToDouble(),
-          reviewsIds: List.generate(
-            random.nextInt(5),
-            (index) => 'review_${random.nextInt(500)}',
-          ),
-          totalSold: random.nextInt(50), // Total rentals
-        );
-      case ProductType.swap:
-        final categories = ProductsCategory.values.toList()..shuffle();
-        final acceptedCats =
-            categories
-                .take(random.nextInt(ProductsCategory.values.length) + 1)
-                .map((c) => c.name)
-                .toList();
-        return ProductModel.forSwap(
-          id: 'dummy_id_${random.nextInt(1000)}',
-          sellerUid: 'dummy_seller_${random.nextInt(100)}',
-          name: 'Dummy Swap Product ${random.nextInt(100)}',
-          description: 'This is a dummy description for a swap product.',
-          imageUrls: [
-            'https://via.placeholder.com/150/FF00FF/FFFFFF?text=DummySwap1',
-            'https://via.placeholder.com/150/00FFFF/000000?text=DummySwap2',
-          ],
-          availableProductSizes: availableSizes,
-          stock: random.nextInt(5) + 1, // Usually single items for swap
-          acceptedCategories: acceptedCats,
-          swapCondition: 'Good condition, looking for similar value items.',
-          category:
-              ProductsCategory.values[random.nextInt(
-                ProductsCategory.values.length,
-              )],
-          rating:
-              (random.nextDouble() * 5)
-                  .roundToDouble(), // Rating might be less relevant for swap
-          reviewsIds: List.generate(
-            random.nextInt(2),
-            (index) => 'review_${random.nextInt(500)}',
-          ), // Fewer reviews likely
-          totalSold: random.nextInt(10), // Total swaps completed
-        );
-    }
+  @override
+  String toString() {
+    return toMap().prettyPrint;
   }
 }

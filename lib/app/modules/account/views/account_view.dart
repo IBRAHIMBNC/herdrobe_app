@@ -67,6 +67,16 @@ class AccountView extends GetView<AccountController> {
                           title: 'Email',
                           value: controller.currentUser?.email ?? '',
                         ),
+                        16.verticalSpace,
+                        _buildAccountInfoContainer(
+                          title: 'Phone',
+                          value: controller.currentUser?.phone ?? '',
+                        ),
+                        16.verticalSpace,
+                        _buildAccountInfoContainer(
+                          title: 'CNIC',
+                          value: controller.currentUser?.cnicNumber ?? '',
+                        ),
                       ],
                     ),
                   ),
@@ -171,12 +181,12 @@ class AccountView extends GetView<AccountController> {
             imageUrl ?? '',
             backgroundColor: AppColors.white,
             radius: 150.r,
-            errorWidget: Icon(
+            hideChild: imageUrl != null,
+            child: Icon(
               CupertinoIcons.person_fill,
               size: 60.sp,
               color: AppColors.grey,
             ),
-
             size: 112.r,
           ),
         ),

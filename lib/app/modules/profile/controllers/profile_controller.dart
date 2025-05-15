@@ -6,7 +6,11 @@ class ProfileController extends GetxController {
   final authService = Get.find<AuthService>();
 
   AppUser? get currentUser => authService.currentUser.value;
-  final count = 0.obs;
+
+  logout() {
+    authService.signOut();
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -21,6 +25,4 @@ class ProfileController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

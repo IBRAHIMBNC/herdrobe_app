@@ -82,39 +82,37 @@ class HomeView extends GetView<HomeController> {
               children: [
                 SizedBox(
                   height: 48.h,
-                  child: Obx(
-                    () => MyListTile(
-                      onTap: () {},
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      padding: kPadding24.hp,
-                      horizontalSpacing: 10.w,
-                      leading: CircleAvatar(
-                        radius: 24.r,
-                        backgroundColor: AppColors.white,
-                        child: CustomImage.fromSize(
-                          controller.currentUser?.imageUrl ?? '',
-                          radius: 50.r,
-                          size: 45.sp,
-                          fit: BoxFit.cover,
-                        ),
+                  child: MyListTile(
+                    onTap: () {},
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    padding: kPadding24.hp,
+                    horizontalSpacing: 10.w,
+                    leading: CircleAvatar(
+                      radius: 24.r,
+                      backgroundColor: AppColors.white,
+                      child: CustomImage.fromSize(
+                        controller.currentUser?.imageUrl ?? '',
+                        radius: 50.r,
+                        size: 45.sp,
+                        fit: BoxFit.cover,
                       ),
-                      title: CustomText.boldHeading18(
-                        controller.currentUser?.fullName.capitalizeFirst ?? '',
-                        color: AppColors.white,
-                      ),
-                      verticalSpacing: 4.h,
-                      subtitle: CustomText.small12(
-                        'Hope you will be doing great',
-                        color: AppColors.white,
-                      ),
-                      trailing: CircleButton(
-                        icon: AppIcons.bell,
-                        onTap: () {
-                          // Get.toNamed(Routes.NOTIFICATION);
-                        },
-                        backgroundColor: AppColors.white.withOpacity(0.2),
-                        iconColor: AppColors.white,
-                      ),
+                    ),
+                    title: CustomText.boldHeading18(
+                      controller.currentUser?.fullName.capitalizeFirst ?? '',
+                      color: AppColors.white,
+                    ),
+                    verticalSpacing: 4.h,
+                    subtitle: CustomText.small12(
+                      'Hope you will be doing great',
+                      color: AppColors.white,
+                    ),
+                    trailing: CircleButton(
+                      icon: AppIcons.bell,
+                      onTap: () {
+                        // Get.toNamed(Routes.NOTIFICATION);
+                      },
+                      backgroundColor: AppColors.white.withOpacity(0.2),
+                      iconColor: AppColors.white,
                     ),
                   ),
                 ),
@@ -147,45 +145,6 @@ class HomeView extends GetView<HomeController> {
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class LoginAlertSheet extends StatelessWidget {
-  const LoginAlertSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GenericBottomSheet(
-      body: Column(
-        children: [
-          CircleAvatar(
-            radius: 50.r,
-            backgroundColor: AppColors.lightGrey,
-            child: CustomImage.fromSize(
-              AppIcons.signinRequired,
-              size: 45.sp,
-              fit: BoxFit.contain,
-            ),
-          ),
-          16.verticalSpace,
-          CustomText.mediumHeading('Account Required!'),
-          8.verticalSpace,
-          CustomText.paragraph(
-            'Please log in or register to proceed further.',
-            color: AppColors.textColor2,
-          ),
-
-          16.verticalSpace,
-
-          RoundedButton.filledMedium(
-            'Login / Create Account',
-            onTap: () {
-              Get.toNamed(Routes.LOGIN);
-            },
           ),
         ],
       ),

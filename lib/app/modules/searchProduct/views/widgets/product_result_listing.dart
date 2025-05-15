@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:herdrobe_app/app/constants/paddings.dart';
+import 'package:herdrobe_app/app/data/models/product.dart';
 import 'package:herdrobe_app/app/widgets/product_details_card.dart';
 
 class ProductResultListing extends StatelessWidget {
@@ -11,7 +12,9 @@ class ProductResultListing extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       padding: EdgeInsets.symmetric(vertical: kPadding16.h),
-      itemBuilder: (context, index) => ProductDetailsCard.listTile(),
+      itemBuilder:
+          (context, index) =>
+              ProductDetailsCard.listTile(productModel: ProductModel.empty()),
       separatorBuilder: (context, index) => 16.verticalSpace,
       itemCount: 10,
     );

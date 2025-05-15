@@ -177,7 +177,7 @@ const _firebaseErrorMessages = {
       'System error: Insufficient permissions. Please contact support.',
   'auth/internal-error': 'An unexpected error occurred. Please try again.',
   'auth/invalid-credential':
-      'Please chec your email and password and try again.',
+      'Please check your email and password and try again.',
   'auth/project-not-found':
       'System configuration error. Please contact support.',
 
